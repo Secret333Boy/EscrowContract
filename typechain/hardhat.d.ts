@@ -53,9 +53,21 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC165__factory>;
     getContractFactory(
+      name: "ERC20Escrow",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC20Escrow__factory>;
+    getContractFactory(
+      name: "ERC721Escrow",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC721Escrow__factory>;
+    getContractFactory(
       name: "Escrow",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Escrow__factory>;
+    getContractFactory(
+      name: "EtherEscrow",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.EtherEscrow__factory>;
     getContractFactory(
       name: "GameEscrow",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -132,10 +144,25 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IERC165>;
     getContractAt(
+      name: "ERC20Escrow",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC20Escrow>;
+    getContractAt(
+      name: "ERC721Escrow",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC721Escrow>;
+    getContractAt(
       name: "Escrow",
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.Escrow>;
+    getContractAt(
+      name: "EtherEscrow",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.EtherEscrow>;
     getContractAt(
       name: "GameEscrow",
       address: string,

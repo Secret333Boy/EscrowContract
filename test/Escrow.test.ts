@@ -5,7 +5,7 @@ import { Contract } from "ethers";
 import ContractDeployerFactory from "../helpers/deploy";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { assert } from "console";
-import { Escrow } from "../typechain";
+import { EtherEscrow } from "../typechain";
 
 const factory = new ContractDeployerFactory();
 // For each smart contract you should call new global describe function
@@ -13,10 +13,10 @@ const factory = new ContractDeployerFactory();
 describe("Escrow", () => {
   let accountA: SignerWithAddress;
   let accountB: SignerWithAddress;
-  let escrow: Escrow;
+  let escrow: EtherEscrow;
   beforeEach(async () => {
     [accountA, accountB] = await ethers.getSigners();
-    const Escrow = await ethers.getContractFactory("Escrow");
+    const Escrow = await ethers.getContractFactory("EtherEscrow");
     escrow = await Escrow.deploy();
   });
 

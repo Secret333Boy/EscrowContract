@@ -1,79 +1,6 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "D:\\Projects\\Escrow\\contracts\\Escrow.sol": {
-      "lastModificationDate": 1661958517227,
-      "contentHash": "c1b588f0ddda85133eba4e3ca6ac455b",
-      "sourceName": "contracts/Escrow.sol",
-      "solcConfig": {
-        "version": "0.8.4",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.4"
-      ],
-      "artifacts": [
-        "Escrow"
-      ]
-    },
-    "D:\\Projects\\Escrow\\contracts\\GameItemEscrow.sol": {
-      "lastModificationDate": 1662021472781,
-      "contentHash": "4a0cbc1dab81330227f2e064fc424691",
-      "sourceName": "contracts/GameItemEscrow.sol",
-      "solcConfig": {
-        "version": "0.8.4",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./Escrow.sol",
-        "./GameItemManager.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.4"
-      ],
-      "artifacts": [
-        "GameItemEscrow"
-      ]
-    },
     "D:\\Projects\\Escrow\\contracts\\GameItemManager.sol": {
       "lastModificationDate": 1661959555839,
       "contentHash": "5b543ee519deb20c245463598c213c08",
@@ -698,47 +625,9 @@
         "GLDExchange"
       ]
     },
-    "D:\\Projects\\Escrow\\contracts\\GLDEscrow.sol": {
-      "lastModificationDate": 1662021411519,
-      "contentHash": "ebbe866c02e1de0f8f34cae36971c384",
-      "sourceName": "contracts/GLDEscrow.sol",
-      "solcConfig": {
-        "version": "0.8.4",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./Escrow.sol",
-        "./GLDToken.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.4"
-      ],
-      "artifacts": [
-        "GLDEscrow"
-      ]
-    },
     "D:\\Projects\\Escrow\\contracts\\GameEscrow.sol": {
-      "lastModificationDate": 1662021133544,
-      "contentHash": "2cb372ae09140e6674335582a109b394",
+      "lastModificationDate": 1662032435874,
+      "contentHash": "99eee1c527adeaa799932586e63858db",
       "sourceName": "contracts/GameEscrow.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -764,14 +653,124 @@
         }
       },
       "imports": [
-        "./GLDEscrow.sol",
-        "./GameItemEscrow.sol"
+        "./ERC20Escrow.sol",
+        "./ERC721Escrow.sol",
+        "./EtherEscrow.sol"
       ],
       "versionPragmas": [
         "^0.8.4"
       ],
       "artifacts": [
         "GameEscrow"
+      ]
+    },
+    "D:\\Projects\\Escrow\\contracts\\ERC20Escrow.sol": {
+      "lastModificationDate": 1662032314250,
+      "contentHash": "cedaa61c19cb2208a612ea17e366cc04",
+      "sourceName": "contracts/ERC20Escrow.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "ERC20Escrow"
+      ]
+    },
+    "D:\\Projects\\Escrow\\contracts\\ERC721Escrow.sol": {
+      "lastModificationDate": 1662032327892,
+      "contentHash": "22b282c3c8d5563755ce5673002ec475",
+      "sourceName": "contracts/ERC721Escrow.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "ERC721Escrow"
+      ]
+    },
+    "D:\\Projects\\Escrow\\contracts\\EtherEscrow.sol": {
+      "lastModificationDate": 1662032325563,
+      "contentHash": "6732877370788322ee211c7c71ea2239",
+      "sourceName": "contracts/EtherEscrow.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "EtherEscrow"
       ]
     }
   }
