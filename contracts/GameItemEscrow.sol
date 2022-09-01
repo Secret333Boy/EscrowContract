@@ -5,7 +5,7 @@ import "./Escrow.sol";
 import "./GameItemManager.sol";
 
 contract GameItemEscrow is Escrow {
-  GameItemManager tokenManager;
+  ERC721 tokenManager;
   mapping(address => uint256[]) private receiverItemsAddress;
   mapping(address => address[]) private rollbackItemAddresses;
   mapping(address => mapping(address => bool)) private rollbackItemPossible;
@@ -21,7 +21,7 @@ contract GameItemEscrow is Escrow {
     uint256 item
   );
 
-  constructor(GameItemManager _tokenManager) {
+  constructor(ERC721 _tokenManager) {
     tokenManager = _tokenManager;
   }
 

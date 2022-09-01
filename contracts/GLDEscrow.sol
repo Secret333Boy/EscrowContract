@@ -5,7 +5,7 @@ import "./Escrow.sol";
 import "./GLDToken.sol";
 
 contract GLDEscrow is Escrow {
-  GLDToken token;
+  ERC20 token;
   mapping(address => uint256) private receiverGLDAddress;
   mapping(address => address[]) private rollbackGLDAddresses;
   mapping(address => mapping(address => bool)) private rollbackGLDPossible;
