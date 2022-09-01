@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.4;
 
-contract Escrow {
+contract EtherEscrow {
   mapping(address => uint256) private receiverAddress;
   mapping(address => address[]) private rollbackAddresses;
   mapping(address => mapping(address => bool)) private rollbackPossible;

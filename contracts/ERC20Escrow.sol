@@ -1,10 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 pragma solidity ^0.8.4;
 
-import "./Escrow.sol";
-import "./GLDToken.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract GLDEscrow is Escrow {
+contract ERC20Escrow {
   ERC20 token;
   mapping(address => uint256) private receiverGLDAddress;
   mapping(address => address[]) private rollbackGLDAddresses;
@@ -21,14 +20,17 @@ contract GLDEscrow is Escrow {
     uint256 value
   );
 
-  constructor(GLDToken _token) {
+  constructor(ERC20 _token) {
     token = _token;
   }
 
   function sendGLD(address payable to, uint256 amount) public {
     address from = msg.sender;
     uint256 value = amount;
-    require(value <= token.balanceOf(msg.sender), "You don't have enough GLD");
+    require(
+      value <= token.balanceOf(msg.sender),
+      "You don't have enough ERC20 tokens"
+    );
     require(
       token.allowance(from, address(this)) >= value,
       "Check the token allowance"
@@ -45,7 +47,7 @@ contract GLDEscrow is Escrow {
   function withdrawGLD() public {
     address payable to = payable(msg.sender);
     uint256 _value = receiverGLDAddress[to];
-    require(_value != 0, "You don't have GLD sent to you");
+    require(_value != 0, "You don't have ERC20 tokens sent to you");
     token.transfer(to, _value);
     delete receiverGLDAddress[to];
     for (uint256 i = 0; i < rollbackGLDAddresses[to].length; i++) {
@@ -60,7 +62,7 @@ contract GLDEscrow is Escrow {
     address payable sender = payable(msg.sender);
     require(
       rollbackGLDPossible[to][sender],
-      "Rollback is not available for you. GLD might be already withdrawed"
+      "Rollback is not available for you. ERC20 tokens might be already withdrawed"
     );
     uint256 _value = rollbackGLDValue[to][sender];
     require(_value != 0, "Rollback value is 0");

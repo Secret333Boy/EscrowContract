@@ -1,11 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.4;
 
-import "./Escrow.sol";
-import "./GameItemManager.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
-contract GameItemEscrow is Escrow {
-  ERC721 tokenManager;
+contract ERC721Escrow {
+  ERC721URIStorage tokenManager;
   mapping(address => uint256[]) private receiverItemsAddress;
   mapping(address => address[]) private rollbackItemAddresses;
   mapping(address => mapping(address => bool)) private rollbackItemPossible;
@@ -21,13 +20,16 @@ contract GameItemEscrow is Escrow {
     uint256 item
   );
 
-  constructor(ERC721 _tokenManager) {
+  constructor(ERC721URIStorage _tokenManager) {
     tokenManager = _tokenManager;
   }
 
   function sendGameItem(address to, uint256 tokenId) public {
     address from = msg.sender;
-    require(tokenManager.ownerOf(tokenId) == msg.sender, "You don't own this item");
+    require(
+      tokenManager.ownerOf(tokenId) == msg.sender,
+      "You don't own this ERC721 token"
+    );
     require(
       tokenManager.getApproved(tokenId) == address(this),
       "Check the token allowance"
@@ -44,8 +46,8 @@ contract GameItemEscrow is Escrow {
   function withdrawGameItem() public {
     address to = msg.sender;
     uint256[] memory items = receiverItemsAddress[to];
-    require(items.length != 0, "You don't have items sent to you");
-    for (uint i = 0; i < items.length; i++) {
+    require(items.length != 0, "You don't have ERC721 tokens sent to you");
+    for (uint256 i = 0; i < items.length; i++) {
       tokenManager.transferFrom(address(this), to, items[i]);
       emit LogItemWithDraw(msg.sender, items[i]);
     }
@@ -61,14 +63,14 @@ contract GameItemEscrow is Escrow {
     address sender = msg.sender;
     require(
       rollbackItemPossible[to][sender],
-      "Rollback is not available for you. Item might be already withdrawed"
+      "Rollback is not available for you. ERC721 tokens might be already withdrawed"
     );
     uint256[] memory items = rollbackItems[to][sender];
-    require(items.length != 0, "There is no items to rollback");
-    for (uint i = 0; i < items.length; i++) {
+    require(items.length != 0, "There is no ERC721 tokens to rollback");
+    for (uint256 i = 0; i < items.length; i++) {
       tokenManager.transferFrom(address(this), msg.sender, items[i]);
 
-      for (uint j = 0; j < receiverItemsAddress[to].length; j++) {
+      for (uint256 j = 0; j < receiverItemsAddress[to].length; j++) {
         if (receiverItemsAddress[to][j] == items[i]) {
           delete receiverItemsAddress[to][j];
           break;
