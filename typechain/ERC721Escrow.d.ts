@@ -22,59 +22,60 @@ import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
 interface ERC721EscrowInterface extends ethers.utils.Interface {
   functions: {
     "inventory()": FunctionFragment;
-    "rollbackGameItem(address)": FunctionFragment;
-    "sendGameItem(address,uint256)": FunctionFragment;
-    "withdrawGameItem()": FunctionFragment;
+    "rollbackERC721(address)": FunctionFragment;
+    "sendERC721(address,uint256)": FunctionFragment;
+    "withdrawERC721()": FunctionFragment;
   };
 
   encodeFunctionData(functionFragment: "inventory", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "rollbackGameItem",
+    functionFragment: "rollbackERC721",
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "sendGameItem",
+    functionFragment: "sendERC721",
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "withdrawGameItem",
+    functionFragment: "withdrawERC721",
     values?: undefined
   ): string;
 
   decodeFunctionResult(functionFragment: "inventory", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "rollbackGameItem",
+    functionFragment: "rollbackERC721",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "sendERC721", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "sendGameItem",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "withdrawGameItem",
+    functionFragment: "withdrawERC721",
     data: BytesLike
   ): Result;
 
   events: {
-    "LogItemRolledBack(address,address,uint256)": EventFragment;
-    "LogItemSend(address,address,uint256)": EventFragment;
-    "LogItemWithDraw(address,uint256)": EventFragment;
+    "LogERC721RolledBack(address,address,uint256)": EventFragment;
+    "LogERC721Send(address,address,uint256)": EventFragment;
+    "LogERC721WithDraw(address,uint256)": EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: "LogItemRolledBack"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LogItemSend"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LogItemWithDraw"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC721RolledBack"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC721Send"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC721WithDraw"): EventFragment;
 }
 
-export type LogItemRolledBackEvent = TypedEvent<
+export type LogERC721RolledBackEvent = TypedEvent<
+  [string, string, BigNumber] & {
+    sender: string;
+    to: string;
+    tokenID: BigNumber;
+  }
+>;
+
+export type LogERC721SendEvent = TypedEvent<
   [string, string, BigNumber] & { sender: string; to: string; item: BigNumber }
 >;
 
-export type LogItemSendEvent = TypedEvent<
-  [string, string, BigNumber] & { sender: string; to: string; item: BigNumber }
->;
-
-export type LogItemWithDrawEvent = TypedEvent<
+export type LogERC721WithDrawEvent = TypedEvent<
   [string, BigNumber] & { to: string; item: BigNumber }
 >;
 
@@ -124,55 +125,73 @@ export class ERC721Escrow extends BaseContract {
   functions: {
     inventory(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    rollbackGameItem(
+    rollbackERC721(
       to: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    sendGameItem(
-      to: string,
-      tokenId: BigNumberish,
+    sendERC721(
+      _to: string,
+      _tokenID: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    withdrawGameItem(
+    withdrawERC721(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
   };
 
   inventory(overrides?: CallOverrides): Promise<BigNumber>;
 
-  rollbackGameItem(
+  rollbackERC721(
     to: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  sendGameItem(
-    to: string,
-    tokenId: BigNumberish,
+  sendERC721(
+    _to: string,
+    _tokenID: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  withdrawGameItem(
+  withdrawERC721(
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   callStatic: {
     inventory(overrides?: CallOverrides): Promise<BigNumber>;
 
-    rollbackGameItem(to: string, overrides?: CallOverrides): Promise<void>;
+    rollbackERC721(to: string, overrides?: CallOverrides): Promise<void>;
 
-    sendGameItem(
-      to: string,
-      tokenId: BigNumberish,
+    sendERC721(
+      _to: string,
+      _tokenID: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    withdrawGameItem(overrides?: CallOverrides): Promise<void>;
+    withdrawERC721(overrides?: CallOverrides): Promise<void>;
   };
 
   filters: {
-    "LogItemRolledBack(address,address,uint256)"(
+    "LogERC721RolledBack(address,address,uint256)"(
+      sender?: string | null,
+      to?: string | null,
+      tokenID?: null
+    ): TypedEventFilter<
+      [string, string, BigNumber],
+      { sender: string; to: string; tokenID: BigNumber }
+    >;
+
+    LogERC721RolledBack(
+      sender?: string | null,
+      to?: string | null,
+      tokenID?: null
+    ): TypedEventFilter<
+      [string, string, BigNumber],
+      { sender: string; to: string; tokenID: BigNumber }
+    >;
+
+    "LogERC721Send(address,address,uint256)"(
       sender?: string | null,
       to?: string | null,
       item?: null
@@ -181,7 +200,7 @@ export class ERC721Escrow extends BaseContract {
       { sender: string; to: string; item: BigNumber }
     >;
 
-    LogItemRolledBack(
+    LogERC721Send(
       sender?: string | null,
       to?: string | null,
       item?: null
@@ -190,30 +209,12 @@ export class ERC721Escrow extends BaseContract {
       { sender: string; to: string; item: BigNumber }
     >;
 
-    "LogItemSend(address,address,uint256)"(
-      sender?: string | null,
-      to?: string | null,
-      item?: null
-    ): TypedEventFilter<
-      [string, string, BigNumber],
-      { sender: string; to: string; item: BigNumber }
-    >;
-
-    LogItemSend(
-      sender?: string | null,
-      to?: string | null,
-      item?: null
-    ): TypedEventFilter<
-      [string, string, BigNumber],
-      { sender: string; to: string; item: BigNumber }
-    >;
-
-    "LogItemWithDraw(address,uint256)"(
+    "LogERC721WithDraw(address,uint256)"(
       to?: string | null,
       item?: null
     ): TypedEventFilter<[string, BigNumber], { to: string; item: BigNumber }>;
 
-    LogItemWithDraw(
+    LogERC721WithDraw(
       to?: string | null,
       item?: null
     ): TypedEventFilter<[string, BigNumber], { to: string; item: BigNumber }>;
@@ -222,18 +223,18 @@ export class ERC721Escrow extends BaseContract {
   estimateGas: {
     inventory(overrides?: CallOverrides): Promise<BigNumber>;
 
-    rollbackGameItem(
+    rollbackERC721(
       to: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    sendGameItem(
-      to: string,
-      tokenId: BigNumberish,
+    sendERC721(
+      _to: string,
+      _tokenID: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    withdrawGameItem(
+    withdrawERC721(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
   };
@@ -241,18 +242,18 @@ export class ERC721Escrow extends BaseContract {
   populateTransaction: {
     inventory(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    rollbackGameItem(
+    rollbackERC721(
       to: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    sendGameItem(
-      to: string,
-      tokenId: BigNumberish,
+    sendERC721(
+      _to: string,
+      _tokenID: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    withdrawGameItem(
+    withdrawERC721(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
   };

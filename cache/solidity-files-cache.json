@@ -626,7 +626,7 @@
       ]
     },
     "D:\\Projects\\Escrow\\contracts\\GameEscrow.sol": {
-      "lastModificationDate": 1662032435874,
+      "lastModificationDate": 1662402527542,
       "contentHash": "99eee1c527adeaa799932586e63858db",
       "sourceName": "contracts/GameEscrow.sol",
       "solcConfig": {
@@ -665,8 +665,8 @@
       ]
     },
     "D:\\Projects\\Escrow\\contracts\\ERC20Escrow.sol": {
-      "lastModificationDate": 1662032314250,
-      "contentHash": "cedaa61c19cb2208a612ea17e366cc04",
+      "lastModificationDate": 1662402735813,
+      "contentHash": "2317a9b431d6d443456c299577a25627",
       "sourceName": "contracts/ERC20Escrow.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -702,8 +702,8 @@
       ]
     },
     "D:\\Projects\\Escrow\\contracts\\ERC721Escrow.sol": {
-      "lastModificationDate": 1662032327892,
-      "contentHash": "22b282c3c8d5563755ce5673002ec475",
+      "lastModificationDate": 1662402743127,
+      "contentHash": "7e0422597274536cf19a2c077e7796fc",
       "sourceName": "contracts/ERC721Escrow.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -739,8 +739,8 @@
       ]
     },
     "D:\\Projects\\Escrow\\contracts\\EtherEscrow.sol": {
-      "lastModificationDate": 1662032325563,
-      "contentHash": "6732877370788322ee211c7c71ea2239",
+      "lastModificationDate": 1662402739215,
+      "contentHash": "76581c058fcc635c36b8c7521d959e48",
       "sourceName": "contracts/EtherEscrow.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -771,6 +771,118 @@
       ],
       "artifacts": [
         "EtherEscrow"
+      ]
+    },
+    "D:\\Projects\\Escrow\\contracts\\ItemMarket.sol": {
+      "lastModificationDate": 1662402746992,
+      "contentHash": "395681d044d5a2ca7b68102b14bfdad3",
+      "sourceName": "contracts/ItemMarket.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        "@openzeppelin/contracts/utils/Counters.sol",
+        "@openzeppelin/contracts/access/Ownable.sol",
+        "@openzeppelin/contracts/utils/math/SafeMath.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "ItemMarket"
+      ]
+    },
+    "D:\\Projects\\Escrow\\node_modules\\@openzeppelin\\contracts\\access\\Ownable.sol": {
+      "lastModificationDate": 1661870241782,
+      "contentHash": "e436cea06129be2c73cda4b1acc848b5",
+      "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../utils/Context.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Ownable"
+      ]
+    },
+    "D:\\Projects\\Escrow\\node_modules\\@openzeppelin\\contracts\\utils\\math\\SafeMath.sol": {
+      "lastModificationDate": 1661870241798,
+      "contentHash": "2337f0279507b5edf14a07067adf0d05",
+      "sourceName": "@openzeppelin/contracts/utils/math/SafeMath.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "SafeMath"
       ]
     }
   }

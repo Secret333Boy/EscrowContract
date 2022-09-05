@@ -22,120 +22,120 @@ import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
 
 interface GameEscrowInterface extends ethers.utils.Interface {
   functions: {
+    "getERC20Balance()": FunctionFragment;
     "getEtherBalance()": FunctionFragment;
-    "getGLDBalance()": FunctionFragment;
     "inventory()": FunctionFragment;
+    "rollbackERC20(address)": FunctionFragment;
+    "rollbackERC721(address)": FunctionFragment;
     "rollbackEther(address)": FunctionFragment;
-    "rollbackGLD(address)": FunctionFragment;
-    "rollbackGameItem(address)": FunctionFragment;
+    "sendERC20(address,uint256)": FunctionFragment;
+    "sendERC721(address,uint256)": FunctionFragment;
     "sendEther(address)": FunctionFragment;
-    "sendGLD(address,uint256)": FunctionFragment;
-    "sendGameItem(address,uint256)": FunctionFragment;
+    "withdrawERC20()": FunctionFragment;
+    "withdrawERC721()": FunctionFragment;
     "withdrawEther()": FunctionFragment;
-    "withdrawGLD()": FunctionFragment;
-    "withdrawGameItem()": FunctionFragment;
   };
 
   encodeFunctionData(
-    functionFragment: "getEtherBalance",
+    functionFragment: "getERC20Balance",
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getGLDBalance",
+    functionFragment: "getEtherBalance",
     values?: undefined
   ): string;
   encodeFunctionData(functionFragment: "inventory", values?: undefined): string;
   encodeFunctionData(
+    functionFragment: "rollbackERC20",
+    values: [string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "rollbackERC721",
+    values: [string]
+  ): string;
+  encodeFunctionData(
     functionFragment: "rollbackEther",
     values: [string]
   ): string;
-  encodeFunctionData(functionFragment: "rollbackGLD", values: [string]): string;
   encodeFunctionData(
-    functionFragment: "rollbackGameItem",
-    values: [string]
+    functionFragment: "sendERC20",
+    values: [string, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "sendERC721",
+    values: [string, BigNumberish]
   ): string;
   encodeFunctionData(functionFragment: "sendEther", values: [string]): string;
   encodeFunctionData(
-    functionFragment: "sendGLD",
-    values: [string, BigNumberish]
+    functionFragment: "withdrawERC20",
+    values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "sendGameItem",
-    values: [string, BigNumberish]
+    functionFragment: "withdrawERC721",
+    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "withdrawEther",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "withdrawGLD",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "withdrawGameItem",
     values?: undefined
   ): string;
 
   decodeFunctionResult(
-    functionFragment: "getEtherBalance",
+    functionFragment: "getERC20Balance",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getGLDBalance",
+    functionFragment: "getEtherBalance",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "inventory", data: BytesLike): Result;
   decodeFunctionResult(
+    functionFragment: "rollbackERC20",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "rollbackERC721",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "rollbackEther",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(
-    functionFragment: "rollbackGLD",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "rollbackGameItem",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "sendERC20", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "sendERC721", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "sendEther", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "sendGLD", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "sendGameItem",
+    functionFragment: "withdrawERC20",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "withdrawERC721",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
     functionFragment: "withdrawEther",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "withdrawGLD",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "withdrawGameItem",
     data: BytesLike
   ): Result;
 
   events: {
     "Error(string)": EventFragment;
-    "LogGLDRolledBack(address,address,uint256)": EventFragment;
-    "LogGLDSend(address,address,uint256)": EventFragment;
-    "LogGLDWithDraw(address,uint256)": EventFragment;
-    "LogItemRolledBack(address,address,uint256)": EventFragment;
-    "LogItemSend(address,address,uint256)": EventFragment;
-    "LogItemWithDraw(address,uint256)": EventFragment;
+    "LogERC20RolledBack(address,address,uint256)": EventFragment;
+    "LogERC20Send(address,address,uint256)": EventFragment;
+    "LogERC20WithDraw(address,uint256)": EventFragment;
+    "LogERC721RolledBack(address,address,uint256)": EventFragment;
+    "LogERC721Send(address,address,uint256)": EventFragment;
+    "LogERC721WithDraw(address,uint256)": EventFragment;
     "LogRolledBack(address,address,uint256)": EventFragment;
     "LogSend(address,address,uint256)": EventFragment;
     "LogWithDraw(address,uint256)": EventFragment;
   };
 
   getEvent(nameOrSignatureOrTopic: "Error"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LogGLDRolledBack"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LogGLDSend"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LogGLDWithDraw"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LogItemRolledBack"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LogItemSend"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LogItemWithDraw"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC20RolledBack"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC20Send"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC20WithDraw"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC721RolledBack"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC721Send"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC721WithDraw"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "LogRolledBack"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "LogSend"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "LogWithDraw"): EventFragment;
@@ -143,27 +143,31 @@ interface GameEscrowInterface extends ethers.utils.Interface {
 
 export type ErrorEvent = TypedEvent<[string] & { arg0: string }>;
 
-export type LogGLDRolledBackEvent = TypedEvent<
+export type LogERC20RolledBackEvent = TypedEvent<
   [string, string, BigNumber] & { sender: string; to: string; value: BigNumber }
 >;
 
-export type LogGLDSendEvent = TypedEvent<
+export type LogERC20SendEvent = TypedEvent<
   [string, string, BigNumber] & { sender: string; to: string; value: BigNumber }
 >;
 
-export type LogGLDWithDrawEvent = TypedEvent<
+export type LogERC20WithDrawEvent = TypedEvent<
   [string, BigNumber] & { to: string; value: BigNumber }
 >;
 
-export type LogItemRolledBackEvent = TypedEvent<
+export type LogERC721RolledBackEvent = TypedEvent<
+  [string, string, BigNumber] & {
+    sender: string;
+    to: string;
+    tokenID: BigNumber;
+  }
+>;
+
+export type LogERC721SendEvent = TypedEvent<
   [string, string, BigNumber] & { sender: string; to: string; item: BigNumber }
 >;
 
-export type LogItemSendEvent = TypedEvent<
-  [string, string, BigNumber] & { sender: string; to: string; item: BigNumber }
->;
-
-export type LogItemWithDrawEvent = TypedEvent<
+export type LogERC721WithDrawEvent = TypedEvent<
   [string, BigNumber] & { to: string; item: BigNumber }
 >;
 
@@ -223,92 +227,100 @@ export class GameEscrow extends BaseContract {
   interface: GameEscrowInterface;
 
   functions: {
+    getERC20Balance(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     getEtherBalance(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    getGLDBalance(overrides?: CallOverrides): Promise<[BigNumber]>;
-
     inventory(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    rollbackERC20(
+      to: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    rollbackERC721(
+      to: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
 
     rollbackEther(
       to: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    rollbackGLD(
-      to: string,
+    sendERC20(
+      _to: string,
+      _value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    rollbackGameItem(
-      to: string,
+    sendERC721(
+      _to: string,
+      _tokenID: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
     sendEther(
-      to: string,
+      _to: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    sendGLD(
-      to: string,
-      amount: BigNumberish,
+    withdrawERC20(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    sendGameItem(
-      to: string,
-      tokenId: BigNumberish,
+    withdrawERC721(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
     withdrawEther(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
-
-    withdrawGLD(
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
-    withdrawGameItem(
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
   };
+
+  getERC20Balance(overrides?: CallOverrides): Promise<BigNumber>;
 
   getEtherBalance(overrides?: CallOverrides): Promise<BigNumber>;
 
-  getGLDBalance(overrides?: CallOverrides): Promise<BigNumber>;
-
   inventory(overrides?: CallOverrides): Promise<BigNumber>;
+
+  rollbackERC20(
+    to: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  rollbackERC721(
+    to: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
 
   rollbackEther(
     to: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  rollbackGLD(
-    to: string,
+  sendERC20(
+    _to: string,
+    _value: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  rollbackGameItem(
-    to: string,
+  sendERC721(
+    _to: string,
+    _tokenID: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   sendEther(
-    to: string,
+    _to: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  sendGLD(
-    to: string,
-    amount: BigNumberish,
+  withdrawERC20(
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  sendGameItem(
-    to: string,
-    tokenId: BigNumberish,
+  withdrawERC721(
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
@@ -316,46 +328,38 @@ export class GameEscrow extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  withdrawGLD(
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
-  withdrawGameItem(
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
   callStatic: {
-    getEtherBalance(overrides?: CallOverrides): Promise<BigNumber>;
+    getERC20Balance(overrides?: CallOverrides): Promise<BigNumber>;
 
-    getGLDBalance(overrides?: CallOverrides): Promise<BigNumber>;
+    getEtherBalance(overrides?: CallOverrides): Promise<BigNumber>;
 
     inventory(overrides?: CallOverrides): Promise<BigNumber>;
 
+    rollbackERC20(to: string, overrides?: CallOverrides): Promise<void>;
+
+    rollbackERC721(to: string, overrides?: CallOverrides): Promise<void>;
+
     rollbackEther(to: string, overrides?: CallOverrides): Promise<void>;
 
-    rollbackGLD(to: string, overrides?: CallOverrides): Promise<void>;
-
-    rollbackGameItem(to: string, overrides?: CallOverrides): Promise<void>;
-
-    sendEther(to: string, overrides?: CallOverrides): Promise<void>;
-
-    sendGLD(
-      to: string,
-      amount: BigNumberish,
+    sendERC20(
+      _to: string,
+      _value: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    sendGameItem(
-      to: string,
-      tokenId: BigNumberish,
+    sendERC721(
+      _to: string,
+      _tokenID: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
+
+    sendEther(_to: string, overrides?: CallOverrides): Promise<void>;
+
+    withdrawERC20(overrides?: CallOverrides): Promise<void>;
+
+    withdrawERC721(overrides?: CallOverrides): Promise<void>;
 
     withdrawEther(overrides?: CallOverrides): Promise<void>;
-
-    withdrawGLD(overrides?: CallOverrides): Promise<void>;
-
-    withdrawGameItem(overrides?: CallOverrides): Promise<void>;
   };
 
   filters: {
@@ -365,7 +369,7 @@ export class GameEscrow extends BaseContract {
 
     Error(undefined?: null): TypedEventFilter<[string], { arg0: string }>;
 
-    "LogGLDRolledBack(address,address,uint256)"(
+    "LogERC20RolledBack(address,address,uint256)"(
       sender?: string | null,
       to?: string | null,
       value?: null
@@ -374,7 +378,7 @@ export class GameEscrow extends BaseContract {
       { sender: string; to: string; value: BigNumber }
     >;
 
-    LogGLDRolledBack(
+    LogERC20RolledBack(
       sender?: string | null,
       to?: string | null,
       value?: null
@@ -383,7 +387,7 @@ export class GameEscrow extends BaseContract {
       { sender: string; to: string; value: BigNumber }
     >;
 
-    "LogGLDSend(address,address,uint256)"(
+    "LogERC20Send(address,address,uint256)"(
       sender?: string | null,
       to?: string | null,
       value?: null
@@ -392,7 +396,7 @@ export class GameEscrow extends BaseContract {
       { sender: string; to: string; value: BigNumber }
     >;
 
-    LogGLDSend(
+    LogERC20Send(
       sender?: string | null,
       to?: string | null,
       value?: null
@@ -401,17 +405,35 @@ export class GameEscrow extends BaseContract {
       { sender: string; to: string; value: BigNumber }
     >;
 
-    "LogGLDWithDraw(address,uint256)"(
+    "LogERC20WithDraw(address,uint256)"(
       to?: string | null,
       value?: null
     ): TypedEventFilter<[string, BigNumber], { to: string; value: BigNumber }>;
 
-    LogGLDWithDraw(
+    LogERC20WithDraw(
       to?: string | null,
       value?: null
     ): TypedEventFilter<[string, BigNumber], { to: string; value: BigNumber }>;
 
-    "LogItemRolledBack(address,address,uint256)"(
+    "LogERC721RolledBack(address,address,uint256)"(
+      sender?: string | null,
+      to?: string | null,
+      tokenID?: null
+    ): TypedEventFilter<
+      [string, string, BigNumber],
+      { sender: string; to: string; tokenID: BigNumber }
+    >;
+
+    LogERC721RolledBack(
+      sender?: string | null,
+      to?: string | null,
+      tokenID?: null
+    ): TypedEventFilter<
+      [string, string, BigNumber],
+      { sender: string; to: string; tokenID: BigNumber }
+    >;
+
+    "LogERC721Send(address,address,uint256)"(
       sender?: string | null,
       to?: string | null,
       item?: null
@@ -420,7 +442,7 @@ export class GameEscrow extends BaseContract {
       { sender: string; to: string; item: BigNumber }
     >;
 
-    LogItemRolledBack(
+    LogERC721Send(
       sender?: string | null,
       to?: string | null,
       item?: null
@@ -429,30 +451,12 @@ export class GameEscrow extends BaseContract {
       { sender: string; to: string; item: BigNumber }
     >;
 
-    "LogItemSend(address,address,uint256)"(
-      sender?: string | null,
-      to?: string | null,
-      item?: null
-    ): TypedEventFilter<
-      [string, string, BigNumber],
-      { sender: string; to: string; item: BigNumber }
-    >;
-
-    LogItemSend(
-      sender?: string | null,
-      to?: string | null,
-      item?: null
-    ): TypedEventFilter<
-      [string, string, BigNumber],
-      { sender: string; to: string; item: BigNumber }
-    >;
-
-    "LogItemWithDraw(address,uint256)"(
+    "LogERC721WithDraw(address,uint256)"(
       to?: string | null,
       item?: null
     ): TypedEventFilter<[string, BigNumber], { to: string; item: BigNumber }>;
 
-    LogItemWithDraw(
+    LogERC721WithDraw(
       to?: string | null,
       item?: null
     ): TypedEventFilter<[string, BigNumber], { to: string; item: BigNumber }>;
@@ -505,105 +509,105 @@ export class GameEscrow extends BaseContract {
   };
 
   estimateGas: {
+    getERC20Balance(overrides?: CallOverrides): Promise<BigNumber>;
+
     getEtherBalance(overrides?: CallOverrides): Promise<BigNumber>;
 
-    getGLDBalance(overrides?: CallOverrides): Promise<BigNumber>;
-
     inventory(overrides?: CallOverrides): Promise<BigNumber>;
+
+    rollbackERC20(
+      to: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    rollbackERC721(
+      to: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
 
     rollbackEther(
       to: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    rollbackGLD(
-      to: string,
+    sendERC20(
+      _to: string,
+      _value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    rollbackGameItem(
-      to: string,
+    sendERC721(
+      _to: string,
+      _tokenID: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
     sendEther(
-      to: string,
+      _to: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    sendGLD(
-      to: string,
-      amount: BigNumberish,
+    withdrawERC20(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    sendGameItem(
-      to: string,
-      tokenId: BigNumberish,
+    withdrawERC721(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
     withdrawEther(
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
-    withdrawGLD(
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
-    withdrawGameItem(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
   };
 
   populateTransaction: {
+    getERC20Balance(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     getEtherBalance(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getGLDBalance(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
     inventory(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    rollbackERC20(
+      to: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    rollbackERC721(
+      to: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
 
     rollbackEther(
       to: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    rollbackGLD(
-      to: string,
+    sendERC20(
+      _to: string,
+      _value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    rollbackGameItem(
-      to: string,
+    sendERC721(
+      _to: string,
+      _tokenID: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     sendEther(
-      to: string,
+      _to: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    sendGLD(
-      to: string,
-      amount: BigNumberish,
+    withdrawERC20(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    sendGameItem(
-      to: string,
-      tokenId: BigNumberish,
+    withdrawERC721(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     withdrawEther(
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
-    withdrawGLD(
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
-    withdrawGameItem(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
   };

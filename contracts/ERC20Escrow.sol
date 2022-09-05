@@ -5,16 +5,19 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract ERC20Escrow {
   ERC20 token;
-  mapping(address => uint256) private receiverGLDAddress;
-  mapping(address => address[]) private rollbackGLDAddresses;
-  mapping(address => mapping(address => bool)) private rollbackGLDPossible;
-  mapping(address => mapping(address => uint256)) private rollbackGLDValue;
+  struct ERC20Transaction {
+    address from;
+    address to;
+    uint256 value;
+  }
 
-  event LogGLDSend(address indexed sender, address indexed to, uint256 value);
+  mapping(address => ERC20Transaction[]) private receiverPendingTransactions;
 
-  event LogGLDWithDraw(address indexed to, uint256 value);
+  event LogERC20Send(address indexed sender, address indexed to, uint256 value);
 
-  event LogGLDRolledBack(
+  event LogERC20WithDraw(address indexed to, uint256 value);
+
+  event LogERC20RolledBack(
     address indexed sender,
     address indexed to,
     uint256 value
@@ -24,62 +27,60 @@ contract ERC20Escrow {
     token = _token;
   }
 
-  function sendGLD(address payable to, uint256 amount) public {
-    address from = msg.sender;
-    uint256 value = amount;
+  function sendERC20(address payable _to, uint256 _value) public {
+    address _from = msg.sender;
     require(
-      value <= token.balanceOf(msg.sender),
+      _value <= token.balanceOf(msg.sender),
       "You don't have enough ERC20 tokens"
     );
     require(
-      token.allowance(from, address(this)) >= value,
+      token.allowance(_from, address(this)) >= _value,
       "Check the token allowance"
     );
-    token.transferFrom(from, address(this), amount);
-    receiverGLDAddress[to] += value;
-    if (!rollbackGLDPossible[to][from]) rollbackGLDValue[to][from] = 0;
-    rollbackGLDValue[to][from] += value;
-    rollbackGLDPossible[to][from] = true;
-    rollbackGLDAddresses[to].push(from);
-    emit LogGLDSend(from, to, value);
+    token.transferFrom(_from, address(this), _value);
+    ERC20Transaction memory transaction = ERC20Transaction({
+      from: _from,
+      to: _to,
+      value: _value
+    });
+    receiverPendingTransactions[_to].push(transaction);
+    emit LogERC20Send(_from, _to, _value);
   }
 
-  function withdrawGLD() public {
+  function withdrawERC20() public {
     address payable to = payable(msg.sender);
-    uint256 _value = receiverGLDAddress[to];
+    uint256 _value = 0;
+    for (uint256 i = 0; i < receiverPendingTransactions[to].length; i++) {
+      _value += receiverPendingTransactions[to][i].value;
+    }
     require(_value != 0, "You don't have ERC20 tokens sent to you");
     token.transfer(to, _value);
-    delete receiverGLDAddress[to];
-    for (uint256 i = 0; i < rollbackGLDAddresses[to].length; i++) {
-      address from = rollbackGLDAddresses[to][i];
-      rollbackGLDPossible[to][from] = false;
-      delete rollbackGLDAddresses[to][i];
-    }
-    emit LogGLDWithDraw(msg.sender, _value);
+    delete receiverPendingTransactions[to];
+    emit LogERC20WithDraw(msg.sender, _value);
   }
 
-  function rollbackGLD(address payable to) public {
+  function rollbackERC20(address payable to) public {
     address payable sender = payable(msg.sender);
-    require(
-      rollbackGLDPossible[to][sender],
-      "Rollback is not available for you. ERC20 tokens might be already withdrawed"
-    );
-    uint256 _value = rollbackGLDValue[to][sender];
-    require(_value != 0, "Rollback value is 0");
-    token.transfer(msg.sender, _value);
-    receiverGLDAddress[to] -= _value;
-    delete rollbackGLDValue[to][sender];
-    rollbackGLDPossible[to][sender] = false;
-    for (uint256 i = 0; i < rollbackGLDAddresses[to].length; i++) {
-      address from = rollbackGLDAddresses[to][i];
-      if (from == sender) {
-        delete rollbackGLDAddresses[to][i];
-        break;
+    uint256 _value = 0;
+    for (uint256 i = 0; i < receiverPendingTransactions[to].length; i++) {
+      if (receiverPendingTransactions[to][i].from == sender) {
+        _value += receiverPendingTransactions[to][i].value;
       }
     }
+    require(
+      _value != 0,
+      "Rollback is not available for you. ERC20 tokens might be already withdrawed"
+    );
+    token.transfer(msg.sender, _value);
+    for (uint256 i = 0; i < receiverPendingTransactions[to].length; i++) {
+      if (receiverPendingTransactions[to][i].from == sender) {
+        delete receiverPendingTransactions[to][i];
+      }
+    }
+    emit LogERC20RolledBack(sender, to, _value);
   }
 
-  function getGLDBalance() public view returns (uint256) {
+  function getERC20Balance() public view returns (uint256) {
     return token.balanceOf(address(this));
   }
 }

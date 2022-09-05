@@ -30,7 +30,6 @@ contract ItemMarket is ERC721URIStorage, Ownable {
     _safeMint(msg.sender, id);
     _setTokenURI(id, _tokenUri);
     _tokenIds.increment();
-
     emit Created(id, msg.sender, _tokenUri);
   }
 
@@ -39,7 +38,6 @@ contract ItemMarket is ERC721URIStorage, Ownable {
     approve(address(this), _id);
     transferFrom(msg.sender, address(this), _id);
     _items[_id] = Item(_price, msg.sender);
-
     emit OnSale(_id, _price, msg.sender);
   }
 
@@ -51,7 +49,6 @@ contract ItemMarket is ERC721URIStorage, Ownable {
     removeProduct(_id);
     uint256 sellerReward = product.price.div(10).mul(9);
     payable(product.seller).transfer(sellerReward);
-
     emit Purchased(_id, msg.sender, product.seller);
   }
 
@@ -61,7 +58,6 @@ contract ItemMarket is ERC721URIStorage, Ownable {
     require(product.seller == msg.sender, "Not an owner");
     ERC721(address(this)).transferFrom(address(this), msg.sender, _id);
     removeProduct(_id);
-
     emit SaleCanceled(_id, msg.sender);
   }
 

@@ -135,7 +135,7 @@ export class EtherEscrow extends BaseContract {
     ): Promise<ContractTransaction>;
 
     sendEther(
-      to: string,
+      _to: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
@@ -152,7 +152,7 @@ export class EtherEscrow extends BaseContract {
   ): Promise<ContractTransaction>;
 
   sendEther(
-    to: string,
+    _to: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
@@ -165,7 +165,7 @@ export class EtherEscrow extends BaseContract {
 
     rollbackEther(to: string, overrides?: CallOverrides): Promise<void>;
 
-    sendEther(to: string, overrides?: CallOverrides): Promise<void>;
+    sendEther(_to: string, overrides?: CallOverrides): Promise<void>;
 
     withdrawEther(overrides?: CallOverrides): Promise<void>;
   };
@@ -233,7 +233,7 @@ export class EtherEscrow extends BaseContract {
     ): Promise<BigNumber>;
 
     sendEther(
-      to: string,
+      _to: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
@@ -251,7 +251,7 @@ export class EtherEscrow extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     sendEther(
-      to: string,
+      _to: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 

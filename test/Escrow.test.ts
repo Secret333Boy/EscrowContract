@@ -81,6 +81,6 @@ describe("Escrow", () => {
     await escrow.connect(accountA).sendEther(accountB.address, { value: 0 });
     await expect(
       escrow.connect(accountA).rollbackEther(accountB.address)
-    ).to.be.revertedWith("Rollback value is 0");
+    ).to.be.revertedWith("Rollback is not available for you. Ethers might be already withdrawed");
   });
 });

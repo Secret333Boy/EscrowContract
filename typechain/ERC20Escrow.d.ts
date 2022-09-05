@@ -21,60 +21,63 @@ import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
 
 interface ERC20EscrowInterface extends ethers.utils.Interface {
   functions: {
-    "getGLDBalance()": FunctionFragment;
-    "rollbackGLD(address)": FunctionFragment;
-    "sendGLD(address,uint256)": FunctionFragment;
-    "withdrawGLD()": FunctionFragment;
+    "getERC20Balance()": FunctionFragment;
+    "rollbackERC20(address)": FunctionFragment;
+    "sendERC20(address,uint256)": FunctionFragment;
+    "withdrawERC20()": FunctionFragment;
   };
 
   encodeFunctionData(
-    functionFragment: "getGLDBalance",
+    functionFragment: "getERC20Balance",
     values?: undefined
   ): string;
-  encodeFunctionData(functionFragment: "rollbackGLD", values: [string]): string;
   encodeFunctionData(
-    functionFragment: "sendGLD",
+    functionFragment: "rollbackERC20",
+    values: [string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "sendERC20",
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "withdrawGLD",
+    functionFragment: "withdrawERC20",
     values?: undefined
   ): string;
 
   decodeFunctionResult(
-    functionFragment: "getGLDBalance",
+    functionFragment: "getERC20Balance",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "rollbackGLD",
+    functionFragment: "rollbackERC20",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "sendGLD", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "sendERC20", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "withdrawGLD",
+    functionFragment: "withdrawERC20",
     data: BytesLike
   ): Result;
 
   events: {
-    "LogGLDRolledBack(address,address,uint256)": EventFragment;
-    "LogGLDSend(address,address,uint256)": EventFragment;
-    "LogGLDWithDraw(address,uint256)": EventFragment;
+    "LogERC20RolledBack(address,address,uint256)": EventFragment;
+    "LogERC20Send(address,address,uint256)": EventFragment;
+    "LogERC20WithDraw(address,uint256)": EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: "LogGLDRolledBack"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LogGLDSend"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LogGLDWithDraw"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC20RolledBack"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC20Send"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC20WithDraw"): EventFragment;
 }
 
-export type LogGLDRolledBackEvent = TypedEvent<
+export type LogERC20RolledBackEvent = TypedEvent<
   [string, string, BigNumber] & { sender: string; to: string; value: BigNumber }
 >;
 
-export type LogGLDSendEvent = TypedEvent<
+export type LogERC20SendEvent = TypedEvent<
   [string, string, BigNumber] & { sender: string; to: string; value: BigNumber }
 >;
 
-export type LogGLDWithDrawEvent = TypedEvent<
+export type LogERC20WithDrawEvent = TypedEvent<
   [string, BigNumber] & { to: string; value: BigNumber }
 >;
 
@@ -122,57 +125,57 @@ export class ERC20Escrow extends BaseContract {
   interface: ERC20EscrowInterface;
 
   functions: {
-    getGLDBalance(overrides?: CallOverrides): Promise<[BigNumber]>;
+    getERC20Balance(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    rollbackGLD(
+    rollbackERC20(
       to: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    sendGLD(
-      to: string,
-      amount: BigNumberish,
+    sendERC20(
+      _to: string,
+      _value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    withdrawGLD(
+    withdrawERC20(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
   };
 
-  getGLDBalance(overrides?: CallOverrides): Promise<BigNumber>;
+  getERC20Balance(overrides?: CallOverrides): Promise<BigNumber>;
 
-  rollbackGLD(
+  rollbackERC20(
     to: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  sendGLD(
-    to: string,
-    amount: BigNumberish,
+  sendERC20(
+    _to: string,
+    _value: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  withdrawGLD(
+  withdrawERC20(
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   callStatic: {
-    getGLDBalance(overrides?: CallOverrides): Promise<BigNumber>;
+    getERC20Balance(overrides?: CallOverrides): Promise<BigNumber>;
 
-    rollbackGLD(to: string, overrides?: CallOverrides): Promise<void>;
+    rollbackERC20(to: string, overrides?: CallOverrides): Promise<void>;
 
-    sendGLD(
-      to: string,
-      amount: BigNumberish,
+    sendERC20(
+      _to: string,
+      _value: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    withdrawGLD(overrides?: CallOverrides): Promise<void>;
+    withdrawERC20(overrides?: CallOverrides): Promise<void>;
   };
 
   filters: {
-    "LogGLDRolledBack(address,address,uint256)"(
+    "LogERC20RolledBack(address,address,uint256)"(
       sender?: string | null,
       to?: string | null,
       value?: null
@@ -181,7 +184,7 @@ export class ERC20Escrow extends BaseContract {
       { sender: string; to: string; value: BigNumber }
     >;
 
-    LogGLDRolledBack(
+    LogERC20RolledBack(
       sender?: string | null,
       to?: string | null,
       value?: null
@@ -190,7 +193,7 @@ export class ERC20Escrow extends BaseContract {
       { sender: string; to: string; value: BigNumber }
     >;
 
-    "LogGLDSend(address,address,uint256)"(
+    "LogERC20Send(address,address,uint256)"(
       sender?: string | null,
       to?: string | null,
       value?: null
@@ -199,7 +202,7 @@ export class ERC20Escrow extends BaseContract {
       { sender: string; to: string; value: BigNumber }
     >;
 
-    LogGLDSend(
+    LogERC20Send(
       sender?: string | null,
       to?: string | null,
       value?: null
@@ -208,51 +211,51 @@ export class ERC20Escrow extends BaseContract {
       { sender: string; to: string; value: BigNumber }
     >;
 
-    "LogGLDWithDraw(address,uint256)"(
+    "LogERC20WithDraw(address,uint256)"(
       to?: string | null,
       value?: null
     ): TypedEventFilter<[string, BigNumber], { to: string; value: BigNumber }>;
 
-    LogGLDWithDraw(
+    LogERC20WithDraw(
       to?: string | null,
       value?: null
     ): TypedEventFilter<[string, BigNumber], { to: string; value: BigNumber }>;
   };
 
   estimateGas: {
-    getGLDBalance(overrides?: CallOverrides): Promise<BigNumber>;
+    getERC20Balance(overrides?: CallOverrides): Promise<BigNumber>;
 
-    rollbackGLD(
+    rollbackERC20(
       to: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    sendGLD(
-      to: string,
-      amount: BigNumberish,
+    sendERC20(
+      _to: string,
+      _value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    withdrawGLD(
+    withdrawERC20(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    getGLDBalance(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getERC20Balance(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    rollbackGLD(
+    rollbackERC20(
       to: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    sendGLD(
-      to: string,
-      amount: BigNumberish,
+    sendERC20(
+      _to: string,
+      _value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    withdrawGLD(
+    withdrawERC20(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
   };

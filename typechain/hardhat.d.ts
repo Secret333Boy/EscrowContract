@@ -13,6 +13,10 @@ import * as Contracts from ".";
 declare module "hardhat/types/runtime" {
   interface HardhatEthersHelpers extends HardhatEthersHelpersBase {
     getContractFactory(
+      name: "Ownable",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Ownable__factory>;
+    getContractFactory(
       name: "ERC20",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ERC20__factory>;
@@ -61,10 +65,6 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ERC721Escrow__factory>;
     getContractFactory(
-      name: "Escrow",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.Escrow__factory>;
-    getContractFactory(
       name: "EtherEscrow",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.EtherEscrow__factory>;
@@ -73,17 +73,9 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.GameEscrow__factory>;
     getContractFactory(
-      name: "GameItemEscrow",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.GameItemEscrow__factory>;
-    getContractFactory(
       name: "GameItemManager",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.GameItemManager__factory>;
-    getContractFactory(
-      name: "GLDEscrow",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.GLDEscrow__factory>;
     getContractFactory(
       name: "GLDExchange",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -92,7 +84,16 @@ declare module "hardhat/types/runtime" {
       name: "GLDToken",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.GLDToken__factory>;
+    getContractFactory(
+      name: "ItemMarket",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ItemMarket__factory>;
 
+    getContractAt(
+      name: "Ownable",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Ownable>;
     getContractAt(
       name: "ERC20",
       address: string,
@@ -154,11 +155,6 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.ERC721Escrow>;
     getContractAt(
-      name: "Escrow",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.Escrow>;
-    getContractAt(
       name: "EtherEscrow",
       address: string,
       signer?: ethers.Signer
@@ -169,20 +165,10 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.GameEscrow>;
     getContractAt(
-      name: "GameItemEscrow",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.GameItemEscrow>;
-    getContractAt(
       name: "GameItemManager",
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.GameItemManager>;
-    getContractAt(
-      name: "GLDEscrow",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.GLDEscrow>;
     getContractAt(
       name: "GLDExchange",
       address: string,
@@ -193,6 +179,11 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.GLDToken>;
+    getContractAt(
+      name: "ItemMarket",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ItemMarket>;
 
     // default types
     getContractFactory(
