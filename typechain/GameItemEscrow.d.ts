@@ -14,95 +14,95 @@ import {
   Overrides,
   PayableOverrides,
   CallOverrides,
-} from "ethers";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
-import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
+} from 'ethers';
+import { BytesLike } from '@ethersproject/bytes';
+import { Listener, Provider } from '@ethersproject/providers';
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi';
+import type { TypedEventFilter, TypedEvent, TypedListener } from './common';
 
 interface GameItemEscrowInterface extends ethers.utils.Interface {
   functions: {
-    "getEtherBalance()": FunctionFragment;
-    "inventory()": FunctionFragment;
-    "rollbackEther(address)": FunctionFragment;
-    "rollbackGameItem(address)": FunctionFragment;
-    "sendEther(address)": FunctionFragment;
-    "sendGameItem(address,uint256)": FunctionFragment;
-    "withdrawEther()": FunctionFragment;
-    "withdrawGameItem()": FunctionFragment;
+    'getEtherBalance()': FunctionFragment;
+    'inventory()': FunctionFragment;
+    'rollbackEther(address)': FunctionFragment;
+    'rollbackGameItem(address)': FunctionFragment;
+    'sendEther(address)': FunctionFragment;
+    'sendGameItem(address,uint256)': FunctionFragment;
+    'withdrawEther()': FunctionFragment;
+    'withdrawGameItem()': FunctionFragment;
   };
 
   encodeFunctionData(
-    functionFragment: "getEtherBalance",
+    functionFragment: 'getEtherBalance',
     values?: undefined
   ): string;
-  encodeFunctionData(functionFragment: "inventory", values?: undefined): string;
+  encodeFunctionData(functionFragment: 'inventory', values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "rollbackEther",
+    functionFragment: 'rollbackEther',
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "rollbackGameItem",
+    functionFragment: 'rollbackGameItem',
     values: [string]
   ): string;
-  encodeFunctionData(functionFragment: "sendEther", values: [string]): string;
+  encodeFunctionData(functionFragment: 'sendEther', values: [string]): string;
   encodeFunctionData(
-    functionFragment: "sendGameItem",
+    functionFragment: 'sendGameItem',
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "withdrawEther",
+    functionFragment: 'withdrawEther',
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "withdrawGameItem",
+    functionFragment: 'withdrawGameItem',
     values?: undefined
   ): string;
 
   decodeFunctionResult(
-    functionFragment: "getEtherBalance",
+    functionFragment: 'getEtherBalance',
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "inventory", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'inventory', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "rollbackEther",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "rollbackGameItem",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "sendEther", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "sendGameItem",
+    functionFragment: 'rollbackEther',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "withdrawEther",
+    functionFragment: 'rollbackGameItem',
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: 'sendEther', data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: 'sendGameItem',
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "withdrawGameItem",
+    functionFragment: 'withdrawEther',
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: 'withdrawGameItem',
     data: BytesLike
   ): Result;
 
   events: {
-    "Error(string)": EventFragment;
-    "LogItemRolledBack(address,address,uint256)": EventFragment;
-    "LogItemSend(address,address,uint256)": EventFragment;
-    "LogItemWithDraw(address,uint256)": EventFragment;
-    "LogRolledBack(address,address,uint256)": EventFragment;
-    "LogSend(address,address,uint256)": EventFragment;
-    "LogWithDraw(address,uint256)": EventFragment;
+    'Error(string)': EventFragment;
+    'LogItemRolledBack(address,address,uint256)': EventFragment;
+    'LogItemSend(address,address,uint256)': EventFragment;
+    'LogItemWithDraw(address,uint256)': EventFragment;
+    'LogRolledBack(address,address,uint256)': EventFragment;
+    'LogSend(address,address,uint256)': EventFragment;
+    'LogWithDraw(address,uint256)': EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: "Error"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LogItemRolledBack"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LogItemSend"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LogItemWithDraw"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LogRolledBack"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LogSend"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "LogWithDraw"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'Error'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'LogItemRolledBack'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'LogItemSend'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'LogItemWithDraw'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'LogRolledBack'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'LogSend'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'LogWithDraw'): EventFragment;
 }
 
 export type ErrorEvent = TypedEvent<[string] & { arg0: string }>;
@@ -265,13 +265,13 @@ export class GameItemEscrow extends BaseContract {
   };
 
   filters: {
-    "Error(string)"(
+    'Error(string)'(
       undefined?: null
     ): TypedEventFilter<[string], { arg0: string }>;
 
     Error(undefined?: null): TypedEventFilter<[string], { arg0: string }>;
 
-    "LogItemRolledBack(address,address,uint256)"(
+    'LogItemRolledBack(address,address,uint256)'(
       sender?: string | null,
       to?: string | null,
       item?: null
@@ -289,7 +289,7 @@ export class GameItemEscrow extends BaseContract {
       { sender: string; to: string; item: BigNumber }
     >;
 
-    "LogItemSend(address,address,uint256)"(
+    'LogItemSend(address,address,uint256)'(
       sender?: string | null,
       to?: string | null,
       item?: null
@@ -307,7 +307,7 @@ export class GameItemEscrow extends BaseContract {
       { sender: string; to: string; item: BigNumber }
     >;
 
-    "LogItemWithDraw(address,uint256)"(
+    'LogItemWithDraw(address,uint256)'(
       to?: string | null,
       item?: null
     ): TypedEventFilter<[string, BigNumber], { to: string; item: BigNumber }>;
@@ -317,7 +317,7 @@ export class GameItemEscrow extends BaseContract {
       item?: null
     ): TypedEventFilter<[string, BigNumber], { to: string; item: BigNumber }>;
 
-    "LogRolledBack(address,address,uint256)"(
+    'LogRolledBack(address,address,uint256)'(
       sender?: string | null,
       to?: string | null,
       value?: null
@@ -335,7 +335,7 @@ export class GameItemEscrow extends BaseContract {
       { sender: string; to: string; value: BigNumber }
     >;
 
-    "LogSend(address,address,uint256)"(
+    'LogSend(address,address,uint256)'(
       sender?: string | null,
       to?: string | null,
       value?: null
@@ -353,7 +353,7 @@ export class GameItemEscrow extends BaseContract {
       { sender: string; to: string; value: BigNumber }
     >;
 
-    "LogWithDraw(address,uint256)"(
+    'LogWithDraw(address,uint256)'(
       to?: string | null,
       value?: null
     ): TypedEventFilter<[string, BigNumber], { to: string; value: BigNumber }>;

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.4;
 
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import '@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol';
 
 contract ERC721Escrow {
   ERC721URIStorage tokenManager;
@@ -36,7 +36,7 @@ contract ERC721Escrow {
     );
     require(
       tokenManager.getApproved(_tokenID) == address(this),
-      "Check the token allowance"
+      'Check the token allowance'
     );
     tokenManager.transferFrom(_from, address(this), _tokenID);
     ERC721Transaction memory transaction = ERC721Transaction({
@@ -73,7 +73,7 @@ contract ERC721Escrow {
     }
     require(
       available,
-      "Rollback is not available for you. ERC721 tokens might be already withdrawed"
+      'Rollback is not available for you. ERC721 tokens might be already withdrawed'
     );
     for (uint256 i = 0; i < receiverPendingTransactions[to].length; i++) {
       if (receiverPendingTransactions[to][i].from == sender) {

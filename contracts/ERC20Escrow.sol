@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 pragma solidity ^0.8.4;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 
 contract ERC20Escrow {
   ERC20 token;
@@ -35,7 +35,7 @@ contract ERC20Escrow {
     );
     require(
       token.allowance(_from, address(this)) >= _value,
-      "Check the token allowance"
+      'Check the token allowance'
     );
     token.transferFrom(_from, address(this), _value);
     ERC20Transaction memory transaction = ERC20Transaction({
@@ -69,7 +69,7 @@ contract ERC20Escrow {
     }
     require(
       _value != 0,
-      "Rollback is not available for you. ERC20 tokens might be already withdrawed"
+      'Rollback is not available for you. ERC20 tokens might be already withdrawed'
     );
     token.transfer(msg.sender, _value);
     for (uint256 i = 0; i < receiverPendingTransactions[to].length; i++) {

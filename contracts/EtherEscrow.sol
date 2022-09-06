@@ -15,7 +15,7 @@ contract EtherEscrow {
   event Error(string);
 
   fallback() external payable {
-    emit Error("call of a non-existent function");
+    emit Error('call of a non-existent function');
   }
 
   event LogSend(address indexed sender, address indexed to, uint256 value);
@@ -47,8 +47,8 @@ contract EtherEscrow {
       _value += receiverPendingTransactions[to][i].value;
     }
     require(_value != 0, "You don't have ethers sent to you");
-    (bool sent, ) = to.call{value: _value}("");
-    require(sent, "Failed to send Ether");
+    (bool sent, ) = to.call{ value: _value }('');
+    require(sent, 'Failed to send Ether');
     delete receiverPendingTransactions[to];
     emit LogWithDraw(msg.sender, _value);
   }
@@ -63,10 +63,10 @@ contract EtherEscrow {
     }
     require(
       _value != 0,
-      "Rollback is not available for you. Ethers might be already withdrawed"
+      'Rollback is not available for you. Ethers might be already withdrawed'
     );
-    (bool sent, ) = sender.call{value: _value}("");
-    require(sent, "Failed to send Ether");
+    (bool sent, ) = sender.call{ value: _value }('');
+    require(sent, 'Failed to send Ether');
     for (uint256 i = 0; i < receiverPendingTransactions[to].length; i++) {
       if (receiverPendingTransactions[to][i].from == sender) {
         delete receiverPendingTransactions[to][i];

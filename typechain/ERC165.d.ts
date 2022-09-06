@@ -12,24 +12,24 @@ import {
   BaseContract,
   ContractTransaction,
   CallOverrides,
-} from "ethers";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
-import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
+} from 'ethers';
+import { BytesLike } from '@ethersproject/bytes';
+import { Listener, Provider } from '@ethersproject/providers';
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi';
+import type { TypedEventFilter, TypedEvent, TypedListener } from './common';
 
 interface ERC165Interface extends ethers.utils.Interface {
   functions: {
-    "supportsInterface(bytes4)": FunctionFragment;
+    'supportsInterface(bytes4)': FunctionFragment;
   };
 
   encodeFunctionData(
-    functionFragment: "supportsInterface",
+    functionFragment: 'supportsInterface',
     values: [BytesLike]
   ): string;
 
   decodeFunctionResult(
-    functionFragment: "supportsInterface",
+    functionFragment: 'supportsInterface',
     data: BytesLike
   ): Result;
 

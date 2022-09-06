@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 pragma solidity ^0.8.4;
 
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import '@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol';
 
 contract EnglishAuction {
   event Start();
@@ -36,8 +36,8 @@ contract EnglishAuction {
   }
 
   function start(uint256 _nftId) external {
-    require(!started, "Started");
-    require(msg.sender == seller, "You are not the seller");
+    require(!started, 'Started');
+    require(msg.sender == seller, 'You are not the seller');
 
     nftId = _nftId;
     nft.transferFrom(msg.sender, address(this), nftId);
@@ -48,9 +48,9 @@ contract EnglishAuction {
   }
 
   function bid() external payable {
-    require(started, "not started");
-    require(block.timestamp < endAt, "Already ended");
-    require(msg.value + bids[msg.sender] > highestBid, "value < highest");
+    require(started, 'not started');
+    require(block.timestamp < endAt, 'Already ended');
+    require(msg.value + bids[msg.sender] > highestBid, 'value < highest');
     highestBidder = msg.sender;
 
     if (highestBidder != address(0)) {
@@ -71,9 +71,9 @@ contract EnglishAuction {
   }
 
   function end() external {
-    require(started, "not started");
-    require(block.timestamp >= endAt, "not ended");
-    require(!ended, "ended");
+    require(started, 'not started');
+    require(block.timestamp >= endAt, 'not ended');
+    require(!ended, 'ended');
 
     ended = true;
     if (highestBidder != address(0)) {

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 pragma solidity ^0.8.4;
-import "./GLDToken.sol";
+import './GLDToken.sol';
 
 contract GLDExchange {
   GLDToken token;
@@ -21,20 +21,20 @@ contract GLDExchange {
     uint256 restAmount = msg.value - (amountToBuy * BUY_COST);
     if (restAmount > 0) payable(msg.sender).transfer(restAmount);
     uint256 dexBalance = token.balanceOf(address(this));
-    require(amountToBuy > 0, "You need to send some ether");
-    require(amountToBuy <= dexBalance, "Not enough tokens in the reserve");
+    require(amountToBuy > 0, 'You need to send some ether');
+    require(amountToBuy <= dexBalance, 'Not enough tokens in the reserve');
     token.transfer(msg.sender, amountToBuy);
     emit Bought(amountToBuy);
     return amountToBuy;
   }
 
   function sell(uint256 amount) public {
-    require(amount > 0, "You need to sell at least some tokens");
+    require(amount > 0, 'You need to sell at least some tokens');
     uint256 allowance = token.allowance(msg.sender, address(this));
-    require(allowance >= amount, "Check the token allowance");
+    require(allowance >= amount, 'Check the token allowance');
     token.transferFrom(msg.sender, address(this), amount);
-    (bool sent, ) = payable(msg.sender).call{value: amount * SELL_COST}("");
-    require(sent, "Failed to send Ether");
+    (bool sent, ) = payable(msg.sender).call{ value: amount * SELL_COST }('');
+    require(sent, 'Failed to send Ether');
     emit Sold(amount);
   }
 

@@ -1,10 +1,10 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "D:\\Projects\\Escrow\\contracts\\GameItemManager.sol": {
-      "lastModificationDate": 1661959555839,
-      "contentHash": "5b543ee519deb20c245463598c213c08",
-      "sourceName": "contracts/GameItemManager.sol",
+    "D:\\Projects\\Escrow\\contracts\\DutchAuction.sol": {
+      "lastModificationDate": 1662472056845,
+      "contentHash": "264d3e195a3379714666ce62ccfc4c94",
+      "sourceName": "contracts/DutchAuction.sol",
       "solcConfig": {
         "version": "0.8.4",
         "settings": {
@@ -29,14 +29,13 @@
         }
       },
       "imports": [
-        "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        "@openzeppelin/contracts/utils/Counters.sol"
+        "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol"
       ],
       "versionPragmas": [
         "^0.8.4"
       ],
       "artifacts": [
-        "GameItemManager"
+        "DutchAuction"
       ]
     },
     "D:\\Projects\\Escrow\\node_modules\\@openzeppelin\\contracts\\token\\ERC721\\extensions\\ERC721URIStorage.sol": {
@@ -74,41 +73,6 @@
       ],
       "artifacts": [
         "ERC721URIStorage"
-      ]
-    },
-    "D:\\Projects\\Escrow\\node_modules\\@openzeppelin\\contracts\\utils\\Counters.sol": {
-      "lastModificationDate": 1661870241535,
-      "contentHash": "74654e3ae5d7f39555055dfe244dab7a",
-      "sourceName": "@openzeppelin/contracts/utils/Counters.sol",
-      "solcConfig": {
-        "version": "0.8.4",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Counters"
       ]
     },
     "D:\\Projects\\Escrow\\node_modules\\@openzeppelin\\contracts\\token\\ERC721\\ERC721.sol": {
@@ -440,6 +404,153 @@
         "IERC165"
       ]
     },
+    "D:\\Projects\\Escrow\\contracts\\ItemMarket.sol": {
+      "lastModificationDate": 1662472057476,
+      "contentHash": "c1a579e36104d9fc296bc696c3b721de",
+      "sourceName": "contracts/ItemMarket.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        "@openzeppelin/contracts/utils/Counters.sol",
+        "@openzeppelin/contracts/access/Ownable.sol",
+        "@openzeppelin/contracts/utils/math/SafeMath.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "ItemMarket"
+      ]
+    },
+    "D:\\Projects\\Escrow\\node_modules\\@openzeppelin\\contracts\\utils\\Counters.sol": {
+      "lastModificationDate": 1661870241535,
+      "contentHash": "74654e3ae5d7f39555055dfe244dab7a",
+      "sourceName": "@openzeppelin/contracts/utils/Counters.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Counters"
+      ]
+    },
+    "D:\\Projects\\Escrow\\node_modules\\@openzeppelin\\contracts\\access\\Ownable.sol": {
+      "lastModificationDate": 1661870241782,
+      "contentHash": "e436cea06129be2c73cda4b1acc848b5",
+      "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../utils/Context.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Ownable"
+      ]
+    },
+    "D:\\Projects\\Escrow\\node_modules\\@openzeppelin\\contracts\\utils\\math\\SafeMath.sol": {
+      "lastModificationDate": 1661870241798,
+      "contentHash": "2337f0279507b5edf14a07067adf0d05",
+      "sourceName": "@openzeppelin/contracts/utils/math/SafeMath.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "SafeMath"
+      ]
+    },
     "D:\\Projects\\Escrow\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\ERC20.sol": {
       "lastModificationDate": 1661870241600,
       "contentHash": "af7bd64e1cfefbf6cb07f2adc1a25392",
@@ -552,8 +663,8 @@
       ]
     },
     "D:\\Projects\\Escrow\\contracts\\GLDToken.sol": {
-      "lastModificationDate": 1661953721908,
-      "contentHash": "9931e6cdfb5424ba32010e38224dfa49",
+      "lastModificationDate": 1662472057412,
+      "contentHash": "d66f8881b5bfc25e9b94348f21c98e20",
       "sourceName": "contracts/GLDToken.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -589,8 +700,8 @@
       ]
     },
     "D:\\Projects\\Escrow\\contracts\\GLDExchange.sol": {
-      "lastModificationDate": 1661959158865,
-      "contentHash": "d49bb9be293ed23cd3ed2cc2dc295e74",
+      "lastModificationDate": 1662472057401,
+      "contentHash": "b0ecbd7a3b4b616c2266782b15b089ef",
       "sourceName": "contracts/GLDExchange.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -625,9 +736,46 @@
         "GLDExchange"
       ]
     },
+    "D:\\Projects\\Escrow\\contracts\\ERC20Escrow.sol": {
+      "lastModificationDate": 1662472057141,
+      "contentHash": "edb1b79491fb716d5dd0bfa3aee8a7a1",
+      "sourceName": "contracts/ERC20Escrow.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "ERC20Escrow"
+      ]
+    },
     "D:\\Projects\\Escrow\\contracts\\GameEscrow.sol": {
-      "lastModificationDate": 1662402527542,
-      "contentHash": "99eee1c527adeaa799932586e63858db",
+      "lastModificationDate": 1662472057306,
+      "contentHash": "51892c9bc39cabbf682f0788c69274c6",
       "sourceName": "contracts/GameEscrow.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -664,46 +812,9 @@
         "GameEscrow"
       ]
     },
-    "D:\\Projects\\Escrow\\contracts\\ERC20Escrow.sol": {
-      "lastModificationDate": 1662402735813,
-      "contentHash": "2317a9b431d6d443456c299577a25627",
-      "sourceName": "contracts/ERC20Escrow.sol",
-      "solcConfig": {
-        "version": "0.8.4",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@openzeppelin/contracts/token/ERC20/ERC20.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.4"
-      ],
-      "artifacts": [
-        "ERC20Escrow"
-      ]
-    },
     "D:\\Projects\\Escrow\\contracts\\ERC721Escrow.sol": {
-      "lastModificationDate": 1662402743127,
-      "contentHash": "7e0422597274536cf19a2c077e7796fc",
+      "lastModificationDate": 1662472057228,
+      "contentHash": "5f418b85f4ba8f76106ca5710cbe6cc7",
       "sourceName": "contracts/ERC721Escrow.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -739,8 +850,8 @@
       ]
     },
     "D:\\Projects\\Escrow\\contracts\\EtherEscrow.sol": {
-      "lastModificationDate": 1662402739215,
-      "contentHash": "76581c058fcc635c36b8c7521d959e48",
+      "lastModificationDate": 1662472057296,
+      "contentHash": "48f5c2902d25b790b4dd4e90d39a7fb3",
       "sourceName": "contracts/EtherEscrow.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -773,10 +884,10 @@
         "EtherEscrow"
       ]
     },
-    "D:\\Projects\\Escrow\\contracts\\ItemMarket.sol": {
-      "lastModificationDate": 1662402746992,
-      "contentHash": "395681d044d5a2ca7b68102b14bfdad3",
-      "sourceName": "contracts/ItemMarket.sol",
+    "D:\\Projects\\Escrow\\contracts\\GameNFT.sol": {
+      "lastModificationDate": 1662472057319,
+      "contentHash": "5cde1334eae8435caf107c57f0ee41ab",
+      "sourceName": "contracts/GameNFT.sol",
       "solcConfig": {
         "version": "0.8.4",
         "settings": {
@@ -802,21 +913,19 @@
       },
       "imports": [
         "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        "@openzeppelin/contracts/utils/Counters.sol",
-        "@openzeppelin/contracts/access/Ownable.sol",
-        "@openzeppelin/contracts/utils/math/SafeMath.sol"
+        "@openzeppelin/contracts/utils/Counters.sol"
       ],
       "versionPragmas": [
         "^0.8.4"
       ],
       "artifacts": [
-        "ItemMarket"
+        "GameNFT"
       ]
     },
-    "D:\\Projects\\Escrow\\node_modules\\@openzeppelin\\contracts\\access\\Ownable.sol": {
-      "lastModificationDate": 1661870241782,
-      "contentHash": "e436cea06129be2c73cda4b1acc848b5",
-      "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
+    "D:\\Projects\\Escrow\\contracts\\EnglishAuction.sol": {
+      "lastModificationDate": 1662472057047,
+      "contentHash": "0323bb3b33c5207341c508962cea4ec1",
+      "sourceName": "contracts/EnglishAuction.sol",
       "solcConfig": {
         "version": "0.8.4",
         "settings": {
@@ -841,48 +950,13 @@
         }
       },
       "imports": [
-        "../utils/Context.sol"
+        "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol"
       ],
       "versionPragmas": [
-        "^0.8.0"
+        "^0.8.4"
       ],
       "artifacts": [
-        "Ownable"
-      ]
-    },
-    "D:\\Projects\\Escrow\\node_modules\\@openzeppelin\\contracts\\utils\\math\\SafeMath.sol": {
-      "lastModificationDate": 1661870241798,
-      "contentHash": "2337f0279507b5edf14a07067adf0d05",
-      "sourceName": "@openzeppelin/contracts/utils/math/SafeMath.sol",
-      "solcConfig": {
-        "version": "0.8.4",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "SafeMath"
+        "EnglishAuction"
       ]
     }
   }

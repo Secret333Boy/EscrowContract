@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 pragma solidity ^0.8.4;
 
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import '@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol';
 
 contract DutchAuction {
   uint256 private constant DURATION = 7 days;
@@ -31,7 +31,7 @@ contract DutchAuction {
     expiresAt = block.timestamp + _duration;
     discountRate = _discountRate;
 
-    require(_startingPrice >= _discountRate * DURATION, "Starting price < min");
+    require(_startingPrice >= _discountRate * DURATION, 'Starting price < min');
 
     nft = _nft;
     nftId = _nftId;
@@ -44,10 +44,10 @@ contract DutchAuction {
   }
 
   function buy() external payable {
-    require(block.timestamp < expiresAt, "Auction expired");
+    require(block.timestamp < expiresAt, 'Auction expired');
 
     uint256 price = getPrice();
-    require(msg.value >= price, "ETH < price");
+    require(msg.value >= price, 'ETH < price');
 
     nft.transferFrom(seller, msg.sender, nftId);
     uint256 refund = msg.value - price;
