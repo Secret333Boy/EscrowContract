@@ -1,6 +1,7 @@
 import Web3 from "web3";
-const ethNetwork =
-  "https://rinkeby.infura.io/v3/5a9f57f0b04c408687153d177a4f1f18";
+import * as dotenv from "dotenv";
+dotenv.config();
+const ethNetwork = process.env.ROPSTEN_URL || "";
 const web3 = new Web3(new Web3.providers.HttpProvider(ethNetwork));
 
 // let's fetch a balance
