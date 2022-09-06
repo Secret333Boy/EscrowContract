@@ -14,131 +14,131 @@ import {
   Overrides,
   PayableOverrides,
   CallOverrides,
-} from 'ethers';
-import { BytesLike } from '@ethersproject/bytes';
-import { Listener, Provider } from '@ethersproject/providers';
-import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi';
-import type { TypedEventFilter, TypedEvent, TypedListener } from './common';
+} from "ethers";
+import { BytesLike } from "@ethersproject/bytes";
+import { Listener, Provider } from "@ethersproject/providers";
+import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
+import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
 
 interface GameEscrowInterface extends ethers.utils.Interface {
   functions: {
-    'getERC20Balance()': FunctionFragment;
-    'getEtherBalance()': FunctionFragment;
-    'inventory()': FunctionFragment;
-    'rollbackERC20(address)': FunctionFragment;
-    'rollbackERC721(address)': FunctionFragment;
-    'rollbackEther(address)': FunctionFragment;
-    'sendERC20(address,uint256)': FunctionFragment;
-    'sendERC721(address,uint256)': FunctionFragment;
-    'sendEther(address)': FunctionFragment;
-    'withdrawERC20()': FunctionFragment;
-    'withdrawERC721()': FunctionFragment;
-    'withdrawEther()': FunctionFragment;
+    "getERC20Balance()": FunctionFragment;
+    "getEtherBalance()": FunctionFragment;
+    "inventory()": FunctionFragment;
+    "rollbackERC20(address)": FunctionFragment;
+    "rollbackERC721(address)": FunctionFragment;
+    "rollbackEther(address)": FunctionFragment;
+    "sendERC20(address,uint256)": FunctionFragment;
+    "sendERC721(address,uint256)": FunctionFragment;
+    "sendEther(address)": FunctionFragment;
+    "withdrawERC20()": FunctionFragment;
+    "withdrawERC721()": FunctionFragment;
+    "withdrawEther()": FunctionFragment;
   };
 
   encodeFunctionData(
-    functionFragment: 'getERC20Balance',
+    functionFragment: "getERC20Balance",
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: 'getEtherBalance',
+    functionFragment: "getEtherBalance",
     values?: undefined
   ): string;
-  encodeFunctionData(functionFragment: 'inventory', values?: undefined): string;
+  encodeFunctionData(functionFragment: "inventory", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: 'rollbackERC20',
+    functionFragment: "rollbackERC20",
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: 'rollbackERC721',
+    functionFragment: "rollbackERC721",
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: 'rollbackEther',
+    functionFragment: "rollbackEther",
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: 'sendERC20',
+    functionFragment: "sendERC20",
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: 'sendERC721',
+    functionFragment: "sendERC721",
     values: [string, BigNumberish]
   ): string;
-  encodeFunctionData(functionFragment: 'sendEther', values: [string]): string;
+  encodeFunctionData(functionFragment: "sendEther", values: [string]): string;
   encodeFunctionData(
-    functionFragment: 'withdrawERC20',
+    functionFragment: "withdrawERC20",
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: 'withdrawERC721',
+    functionFragment: "withdrawERC721",
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: 'withdrawEther',
+    functionFragment: "withdrawEther",
     values?: undefined
   ): string;
 
   decodeFunctionResult(
-    functionFragment: 'getERC20Balance',
+    functionFragment: "getERC20Balance",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: 'getEtherBalance',
+    functionFragment: "getEtherBalance",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: 'inventory', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "inventory", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: 'rollbackERC20',
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: 'rollbackERC721',
+    functionFragment: "rollbackERC20",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: 'rollbackEther',
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: 'sendERC20', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'sendERC721', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'sendEther', data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: 'withdrawERC20',
+    functionFragment: "rollbackERC721",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: 'withdrawERC721',
+    functionFragment: "rollbackEther",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "sendERC20", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "sendERC721", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "sendEther", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "withdrawERC20",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: 'withdrawEther',
+    functionFragment: "withdrawERC721",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "withdrawEther",
     data: BytesLike
   ): Result;
 
   events: {
-    'Error(string)': EventFragment;
-    'LogERC20RolledBack(address,address,uint256)': EventFragment;
-    'LogERC20Send(address,address,uint256)': EventFragment;
-    'LogERC20WithDraw(address,uint256)': EventFragment;
-    'LogERC721RolledBack(address,address,uint256)': EventFragment;
-    'LogERC721Send(address,address,uint256)': EventFragment;
-    'LogERC721WithDraw(address,uint256)': EventFragment;
-    'LogRolledBack(address,address,uint256)': EventFragment;
-    'LogSend(address,address,uint256)': EventFragment;
-    'LogWithDraw(address,uint256)': EventFragment;
+    "Error(string)": EventFragment;
+    "LogERC20RolledBack(address,address,uint256)": EventFragment;
+    "LogERC20Send(address,address,uint256)": EventFragment;
+    "LogERC20WithDraw(address,uint256)": EventFragment;
+    "LogERC721RolledBack(address,address,uint256)": EventFragment;
+    "LogERC721Send(address,address,uint256)": EventFragment;
+    "LogERC721WithDraw(address,uint256)": EventFragment;
+    "LogRolledBack(address,address,uint256)": EventFragment;
+    "LogSend(address,address,uint256)": EventFragment;
+    "LogWithDraw(address,uint256)": EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: 'Error'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'LogERC20RolledBack'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'LogERC20Send'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'LogERC20WithDraw'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'LogERC721RolledBack'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'LogERC721Send'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'LogERC721WithDraw'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'LogRolledBack'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'LogSend'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'LogWithDraw'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Error"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC20RolledBack"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC20Send"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC20WithDraw"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC721RolledBack"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC721Send"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC721WithDraw"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogRolledBack"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogSend"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogWithDraw"): EventFragment;
 }
 
 export type ErrorEvent = TypedEvent<[string] & { arg0: string }>;
@@ -363,13 +363,13 @@ export class GameEscrow extends BaseContract {
   };
 
   filters: {
-    'Error(string)'(
+    "Error(string)"(
       undefined?: null
     ): TypedEventFilter<[string], { arg0: string }>;
 
     Error(undefined?: null): TypedEventFilter<[string], { arg0: string }>;
 
-    'LogERC20RolledBack(address,address,uint256)'(
+    "LogERC20RolledBack(address,address,uint256)"(
       sender?: string | null,
       to?: string | null,
       value?: null
@@ -387,7 +387,7 @@ export class GameEscrow extends BaseContract {
       { sender: string; to: string; value: BigNumber }
     >;
 
-    'LogERC20Send(address,address,uint256)'(
+    "LogERC20Send(address,address,uint256)"(
       sender?: string | null,
       to?: string | null,
       value?: null
@@ -405,7 +405,7 @@ export class GameEscrow extends BaseContract {
       { sender: string; to: string; value: BigNumber }
     >;
 
-    'LogERC20WithDraw(address,uint256)'(
+    "LogERC20WithDraw(address,uint256)"(
       to?: string | null,
       value?: null
     ): TypedEventFilter<[string, BigNumber], { to: string; value: BigNumber }>;
@@ -415,7 +415,7 @@ export class GameEscrow extends BaseContract {
       value?: null
     ): TypedEventFilter<[string, BigNumber], { to: string; value: BigNumber }>;
 
-    'LogERC721RolledBack(address,address,uint256)'(
+    "LogERC721RolledBack(address,address,uint256)"(
       sender?: string | null,
       to?: string | null,
       tokenID?: null
@@ -433,7 +433,7 @@ export class GameEscrow extends BaseContract {
       { sender: string; to: string; tokenID: BigNumber }
     >;
 
-    'LogERC721Send(address,address,uint256)'(
+    "LogERC721Send(address,address,uint256)"(
       sender?: string | null,
       to?: string | null,
       item?: null
@@ -451,7 +451,7 @@ export class GameEscrow extends BaseContract {
       { sender: string; to: string; item: BigNumber }
     >;
 
-    'LogERC721WithDraw(address,uint256)'(
+    "LogERC721WithDraw(address,uint256)"(
       to?: string | null,
       item?: null
     ): TypedEventFilter<[string, BigNumber], { to: string; item: BigNumber }>;
@@ -461,7 +461,7 @@ export class GameEscrow extends BaseContract {
       item?: null
     ): TypedEventFilter<[string, BigNumber], { to: string; item: BigNumber }>;
 
-    'LogRolledBack(address,address,uint256)'(
+    "LogRolledBack(address,address,uint256)"(
       sender?: string | null,
       to?: string | null,
       value?: null
@@ -479,7 +479,7 @@ export class GameEscrow extends BaseContract {
       { sender: string; to: string; value: BigNumber }
     >;
 
-    'LogSend(address,address,uint256)'(
+    "LogSend(address,address,uint256)"(
       sender?: string | null,
       to?: string | null,
       value?: null
@@ -497,7 +497,7 @@ export class GameEscrow extends BaseContract {
       { sender: string; to: string; value: BigNumber }
     >;
 
-    'LogWithDraw(address,uint256)'(
+    "LogWithDraw(address,uint256)"(
       to?: string | null,
       value?: null
     ): TypedEventFilter<[string, BigNumber], { to: string; value: BigNumber }>;

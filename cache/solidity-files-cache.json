@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "D:\\Projects\\Escrow\\contracts\\DutchAuction.sol": {
-      "lastModificationDate": 1662472056845,
-      "contentHash": "264d3e195a3379714666ce62ccfc4c94",
+      "lastModificationDate": 1662475232899,
+      "contentHash": "c4f5ae774ba58c140e2b0e6e7c205798",
       "sourceName": "contracts/DutchAuction.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -405,8 +405,8 @@
       ]
     },
     "D:\\Projects\\Escrow\\contracts\\ItemMarket.sol": {
-      "lastModificationDate": 1662472057476,
-      "contentHash": "c1a579e36104d9fc296bc696c3b721de",
+      "lastModificationDate": 1662475233755,
+      "contentHash": "cb03183e325a4b197958188fd90310c9",
       "sourceName": "contracts/ItemMarket.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -663,8 +663,8 @@
       ]
     },
     "D:\\Projects\\Escrow\\contracts\\GLDToken.sol": {
-      "lastModificationDate": 1662472057412,
-      "contentHash": "d66f8881b5bfc25e9b94348f21c98e20",
+      "lastModificationDate": 1662475233654,
+      "contentHash": "d5c99b6c5e1c0c75d8be2d283d58d3b6",
       "sourceName": "contracts/GLDToken.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -700,8 +700,8 @@
       ]
     },
     "D:\\Projects\\Escrow\\contracts\\GLDExchange.sol": {
-      "lastModificationDate": 1662472057401,
-      "contentHash": "b0ecbd7a3b4b616c2266782b15b089ef",
+      "lastModificationDate": 1662475233641,
+      "contentHash": "910186cad0b6c69f25bcf28010fa74f0",
       "sourceName": "contracts/GLDExchange.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -737,8 +737,8 @@
       ]
     },
     "D:\\Projects\\Escrow\\contracts\\ERC20Escrow.sol": {
-      "lastModificationDate": 1662472057141,
-      "contentHash": "edb1b79491fb716d5dd0bfa3aee8a7a1",
+      "lastModificationDate": 1662475233316,
+      "contentHash": "27e2b04c50afd5ac9953662079ea7b8d",
       "sourceName": "contracts/ERC20Escrow.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -774,8 +774,8 @@
       ]
     },
     "D:\\Projects\\Escrow\\contracts\\GameEscrow.sol": {
-      "lastModificationDate": 1662472057306,
-      "contentHash": "51892c9bc39cabbf682f0788c69274c6",
+      "lastModificationDate": 1662475233561,
+      "contentHash": "2b0b1c2bbafb5981c23f3bfe25386e11",
       "sourceName": "contracts/GameEscrow.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -813,8 +813,8 @@
       ]
     },
     "D:\\Projects\\Escrow\\contracts\\ERC721Escrow.sol": {
-      "lastModificationDate": 1662472057228,
-      "contentHash": "5f418b85f4ba8f76106ca5710cbe6cc7",
+      "lastModificationDate": 1662475233427,
+      "contentHash": "2d401dd1b492dfefa2602048bb89944b",
       "sourceName": "contracts/ERC721Escrow.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -850,8 +850,8 @@
       ]
     },
     "D:\\Projects\\Escrow\\contracts\\EtherEscrow.sol": {
-      "lastModificationDate": 1662472057296,
-      "contentHash": "48f5c2902d25b790b4dd4e90d39a7fb3",
+      "lastModificationDate": 1662475233547,
+      "contentHash": "b3279a219f2cfa87c4ab819ddc517263",
       "sourceName": "contracts/EtherEscrow.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -885,8 +885,8 @@
       ]
     },
     "D:\\Projects\\Escrow\\contracts\\GameNFT.sol": {
-      "lastModificationDate": 1662472057319,
-      "contentHash": "5cde1334eae8435caf107c57f0ee41ab",
+      "lastModificationDate": 1662475233584,
+      "contentHash": "822fc3d42b8536d5251c3dc2412cfdfa",
       "sourceName": "contracts/GameNFT.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -923,8 +923,8 @@
       ]
     },
     "D:\\Projects\\Escrow\\contracts\\EnglishAuction.sol": {
-      "lastModificationDate": 1662472057047,
-      "contentHash": "0323bb3b33c5207341c508962cea4ec1",
+      "lastModificationDate": 1662475233173,
+      "contentHash": "a3ced0f2f7ccca9b35f053855f940c40",
       "sourceName": "contracts/EnglishAuction.sol",
       "solcConfig": {
         "version": "0.8.4",

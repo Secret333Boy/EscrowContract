@@ -13,54 +13,54 @@ import {
   ContractTransaction,
   PayableOverrides,
   CallOverrides,
-} from 'ethers';
-import { BytesLike } from '@ethersproject/bytes';
-import { Listener, Provider } from '@ethersproject/providers';
-import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi';
-import type { TypedEventFilter, TypedEvent, TypedListener } from './common';
+} from "ethers";
+import { BytesLike } from "@ethersproject/bytes";
+import { Listener, Provider } from "@ethersproject/providers";
+import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
+import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
 
 interface DutchAuctionInterface extends ethers.utils.Interface {
   functions: {
-    'buy()': FunctionFragment;
-    'discountRate()': FunctionFragment;
-    'expiresAt()': FunctionFragment;
-    'getPrice()': FunctionFragment;
-    'nft()': FunctionFragment;
-    'nftId()': FunctionFragment;
-    'seller()': FunctionFragment;
-    'startAt()': FunctionFragment;
-    'startingPrice()': FunctionFragment;
+    "buy()": FunctionFragment;
+    "discountRate()": FunctionFragment;
+    "expiresAt()": FunctionFragment;
+    "getPrice()": FunctionFragment;
+    "nft()": FunctionFragment;
+    "nftId()": FunctionFragment;
+    "seller()": FunctionFragment;
+    "startAt()": FunctionFragment;
+    "startingPrice()": FunctionFragment;
   };
 
-  encodeFunctionData(functionFragment: 'buy', values?: undefined): string;
+  encodeFunctionData(functionFragment: "buy", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: 'discountRate',
+    functionFragment: "discountRate",
     values?: undefined
   ): string;
-  encodeFunctionData(functionFragment: 'expiresAt', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'getPrice', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'nft', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'nftId', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'seller', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'startAt', values?: undefined): string;
+  encodeFunctionData(functionFragment: "expiresAt", values?: undefined): string;
+  encodeFunctionData(functionFragment: "getPrice", values?: undefined): string;
+  encodeFunctionData(functionFragment: "nft", values?: undefined): string;
+  encodeFunctionData(functionFragment: "nftId", values?: undefined): string;
+  encodeFunctionData(functionFragment: "seller", values?: undefined): string;
+  encodeFunctionData(functionFragment: "startAt", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: 'startingPrice',
+    functionFragment: "startingPrice",
     values?: undefined
   ): string;
 
-  decodeFunctionResult(functionFragment: 'buy', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "buy", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: 'discountRate',
+    functionFragment: "discountRate",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: 'expiresAt', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'getPrice', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'nft', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'nftId', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'seller', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'startAt', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "expiresAt", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "getPrice", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "nft", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "nftId", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "seller", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "startAt", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: 'startingPrice',
+    functionFragment: "startingPrice",
     data: BytesLike
   ): Result;
 

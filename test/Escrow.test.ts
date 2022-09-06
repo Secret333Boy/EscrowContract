@@ -22,7 +22,7 @@ describe('Escrow', () => {
     expect(escrow.address).to.be.properAddress;
   });
 
-  //send ether to the contract
+  // send ether to the contract
   it('should send true balance', async () => {
     const balance = await escrow.provider.getBalance(escrow.address);
     expect(balance).to.eq(0);

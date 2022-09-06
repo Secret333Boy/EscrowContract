@@ -3,6 +3,7 @@
     "browser": true,
     "es2021": true
   },
+  "parser": "@typescript-eslint/parser",
   "extends": [
     "eslint:recommended",
     "plugin:prettier/recommended",
@@ -13,7 +14,6 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-
   "plugins": ["@typescript-eslint", "prettier"],
   "rules": {}
 }

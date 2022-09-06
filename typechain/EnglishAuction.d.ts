@@ -14,80 +14,80 @@ import {
   Overrides,
   PayableOverrides,
   CallOverrides,
-} from 'ethers';
-import { BytesLike } from '@ethersproject/bytes';
-import { Listener, Provider } from '@ethersproject/providers';
-import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi';
-import type { TypedEventFilter, TypedEvent, TypedListener } from './common';
+} from "ethers";
+import { BytesLike } from "@ethersproject/bytes";
+import { Listener, Provider } from "@ethersproject/providers";
+import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
+import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
 
 interface EnglishAuctionInterface extends ethers.utils.Interface {
   functions: {
-    'bid()': FunctionFragment;
-    'bids(address)': FunctionFragment;
-    'end()': FunctionFragment;
-    'endAt()': FunctionFragment;
-    'ended()': FunctionFragment;
-    'highestBid()': FunctionFragment;
-    'highestBidder()': FunctionFragment;
-    'nft()': FunctionFragment;
-    'nftId()': FunctionFragment;
-    'seller()': FunctionFragment;
-    'start(uint256)': FunctionFragment;
-    'started()': FunctionFragment;
-    'timeLeft()': FunctionFragment;
-    'withdraw()': FunctionFragment;
+    "bid()": FunctionFragment;
+    "bids(address)": FunctionFragment;
+    "end()": FunctionFragment;
+    "endAt()": FunctionFragment;
+    "ended()": FunctionFragment;
+    "highestBid()": FunctionFragment;
+    "highestBidder()": FunctionFragment;
+    "nft()": FunctionFragment;
+    "nftId()": FunctionFragment;
+    "seller()": FunctionFragment;
+    "start(uint256)": FunctionFragment;
+    "started()": FunctionFragment;
+    "timeLeft()": FunctionFragment;
+    "withdraw()": FunctionFragment;
   };
 
-  encodeFunctionData(functionFragment: 'bid', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'bids', values: [string]): string;
-  encodeFunctionData(functionFragment: 'end', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'endAt', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'ended', values?: undefined): string;
+  encodeFunctionData(functionFragment: "bid", values?: undefined): string;
+  encodeFunctionData(functionFragment: "bids", values: [string]): string;
+  encodeFunctionData(functionFragment: "end", values?: undefined): string;
+  encodeFunctionData(functionFragment: "endAt", values?: undefined): string;
+  encodeFunctionData(functionFragment: "ended", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: 'highestBid',
+    functionFragment: "highestBid",
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: 'highestBidder',
+    functionFragment: "highestBidder",
     values?: undefined
   ): string;
-  encodeFunctionData(functionFragment: 'nft', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'nftId', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'seller', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'start', values: [BigNumberish]): string;
-  encodeFunctionData(functionFragment: 'started', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'timeLeft', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'withdraw', values?: undefined): string;
+  encodeFunctionData(functionFragment: "nft", values?: undefined): string;
+  encodeFunctionData(functionFragment: "nftId", values?: undefined): string;
+  encodeFunctionData(functionFragment: "seller", values?: undefined): string;
+  encodeFunctionData(functionFragment: "start", values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: "started", values?: undefined): string;
+  encodeFunctionData(functionFragment: "timeLeft", values?: undefined): string;
+  encodeFunctionData(functionFragment: "withdraw", values?: undefined): string;
 
-  decodeFunctionResult(functionFragment: 'bid', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'bids', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'end', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'endAt', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'ended', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'highestBid', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "bid", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "bids", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "end", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "endAt", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "ended", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "highestBid", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: 'highestBidder',
+    functionFragment: "highestBidder",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: 'nft', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'nftId', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'seller', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'start', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'started', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'timeLeft', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'withdraw', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "nft", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "nftId", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "seller", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "start", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "started", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "timeLeft", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
 
   events: {
-    'Bid(address,uint256)': EventFragment;
-    'End(address,uint256)': EventFragment;
-    'Start()': EventFragment;
-    'Withdraw(address,uint256)': EventFragment;
+    "Bid(address,uint256)": EventFragment;
+    "End(address,uint256)": EventFragment;
+    "Start()": EventFragment;
+    "Withdraw(address,uint256)": EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: 'Bid'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'End'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'Start'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'Withdraw'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Bid"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "End"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Start"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Withdraw"): EventFragment;
 }
 
 export type BidEvent = TypedEvent<
@@ -254,7 +254,7 @@ export class EnglishAuction extends BaseContract {
   };
 
   filters: {
-    'Bid(address,uint256)'(
+    "Bid(address,uint256)"(
       sender?: string | null,
       amount?: null
     ): TypedEventFilter<
@@ -270,7 +270,7 @@ export class EnglishAuction extends BaseContract {
       { sender: string; amount: BigNumber }
     >;
 
-    'End(address,uint256)'(
+    "End(address,uint256)"(
       winner?: null,
       amount?: null
     ): TypedEventFilter<
@@ -286,11 +286,11 @@ export class EnglishAuction extends BaseContract {
       { winner: string; amount: BigNumber }
     >;
 
-    'Start()'(): TypedEventFilter<[], {}>;
+    "Start()"(): TypedEventFilter<[], {}>;
 
     Start(): TypedEventFilter<[], {}>;
 
-    'Withdraw(address,uint256)'(
+    "Withdraw(address,uint256)"(
       bidder?: string | null,
       amount?: null
     ): TypedEventFilter<

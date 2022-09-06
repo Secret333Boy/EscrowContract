@@ -6,11 +6,12 @@ import path from 'path';
 export class CopyService {
   fromDir: string;
   toDir: string;
-  constructor(private logger: ILogger) {
+  constructor(private readonly logger: ILogger) {
     const currentDir = path.resolve(__dirname, '..');
     this.fromDir = path.resolve(currentDir, './artifacts/contracts');
     this.toDir = path.resolve(currentDir, './frontend/src/contracts/abis');
   }
+
   copy(fileName: string): void {
     const fullInputPath = path.resolve(
       this.fromDir,
@@ -19,7 +20,7 @@ export class CopyService {
     const fullOutputPath = path.resolve(this.toDir, `${fileName}.json`);
 
     fs.copyFile(fullInputPath, fullOutputPath, (err) => {
-      if (err) {
+      if (err != null) {
         this.logger.error(err.message);
         throw err;
       }
@@ -31,9 +32,9 @@ export class ContractDeployer<C extends string> {
   currentNetwork: string | undefined;
   constructor(
     private contactName: C,
-    private args: unknown[] = [],
-    private logger: ILogger,
-    private copyService: CopyService
+    private readonly args: unknown[] = [],
+    private readonly logger: ILogger,
+    private readonly copyService: CopyService
   ) {
     this.currentNetwork = process.env.HARDHAT_NETWORK;
   }
@@ -50,6 +51,7 @@ export class ContractDeployer<C extends string> {
     addresses[this.contactName] = address;
     fs.writeFileSync(filePath, JSON.stringify(addresses));
   }
+
   async deploy() {
     try {
       const Contract = await ethers.getContractFactory(this.contactName);
@@ -78,8 +80,8 @@ export class ContractDeployer<C extends string> {
 
 export default class ContractDeployerFactory {
   constructor(
-    private logger: ILogger = console,
-    private copyService: CopyService = new CopyService(console)
+    private readonly logger: ILogger = console,
+    private readonly copyService: CopyService = new CopyService(console)
   ) {}
 
   public createContractDeployer<C extends string>(

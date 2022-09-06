@@ -6,12 +6,12 @@ async function main() {
   const token = await factory
     .createContractDeployer('GLDToken', [1000])
     .deploy();
-  if (!token) throw new Error('Token not deployed');
+  if (token == null) throw new Error('Token not deployed');
   const gldExchange = await factory
     .createContractDeployer('GLDExchange', [token.address])
     .deploy();
   const nft = await factory.createContractDeployer('GameNFT', []).deploy();
-  if (!nft) throw new Error('NFT not deployed');
+  if (nft == null) throw new Error('NFT not deployed');
   const gameEscrow = await factory
     .createContractDeployer('GameEscrow', [token.address, nft.address])
     .deploy();

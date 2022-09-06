@@ -13,54 +13,54 @@ import {
   ContractTransaction,
   Overrides,
   CallOverrides,
-} from 'ethers';
-import { BytesLike } from '@ethersproject/bytes';
-import { Listener, Provider } from '@ethersproject/providers';
-import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi';
-import type { TypedEventFilter, TypedEvent, TypedListener } from './common';
+} from "ethers";
+import { BytesLike } from "@ethersproject/bytes";
+import { Listener, Provider } from "@ethersproject/providers";
+import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
+import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
 
 interface ERC721EscrowInterface extends ethers.utils.Interface {
   functions: {
-    'inventory()': FunctionFragment;
-    'rollbackERC721(address)': FunctionFragment;
-    'sendERC721(address,uint256)': FunctionFragment;
-    'withdrawERC721()': FunctionFragment;
+    "inventory()": FunctionFragment;
+    "rollbackERC721(address)": FunctionFragment;
+    "sendERC721(address,uint256)": FunctionFragment;
+    "withdrawERC721()": FunctionFragment;
   };
 
-  encodeFunctionData(functionFragment: 'inventory', values?: undefined): string;
+  encodeFunctionData(functionFragment: "inventory", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: 'rollbackERC721',
+    functionFragment: "rollbackERC721",
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: 'sendERC721',
+    functionFragment: "sendERC721",
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: 'withdrawERC721',
+    functionFragment: "withdrawERC721",
     values?: undefined
   ): string;
 
-  decodeFunctionResult(functionFragment: 'inventory', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "inventory", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: 'rollbackERC721',
+    functionFragment: "rollbackERC721",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: 'sendERC721', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "sendERC721", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: 'withdrawERC721',
+    functionFragment: "withdrawERC721",
     data: BytesLike
   ): Result;
 
   events: {
-    'LogERC721RolledBack(address,address,uint256)': EventFragment;
-    'LogERC721Send(address,address,uint256)': EventFragment;
-    'LogERC721WithDraw(address,uint256)': EventFragment;
+    "LogERC721RolledBack(address,address,uint256)": EventFragment;
+    "LogERC721Send(address,address,uint256)": EventFragment;
+    "LogERC721WithDraw(address,uint256)": EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: 'LogERC721RolledBack'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'LogERC721Send'): EventFragment;
-  getEvent(nameOrSignatureOrTopic: 'LogERC721WithDraw'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC721RolledBack"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC721Send"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "LogERC721WithDraw"): EventFragment;
 }
 
 export type LogERC721RolledBackEvent = TypedEvent<
@@ -173,7 +173,7 @@ export class ERC721Escrow extends BaseContract {
   };
 
   filters: {
-    'LogERC721RolledBack(address,address,uint256)'(
+    "LogERC721RolledBack(address,address,uint256)"(
       sender?: string | null,
       to?: string | null,
       tokenID?: null
@@ -191,7 +191,7 @@ export class ERC721Escrow extends BaseContract {
       { sender: string; to: string; tokenID: BigNumber }
     >;
 
-    'LogERC721Send(address,address,uint256)'(
+    "LogERC721Send(address,address,uint256)"(
       sender?: string | null,
       to?: string | null,
       item?: null
@@ -209,7 +209,7 @@ export class ERC721Escrow extends BaseContract {
       { sender: string; to: string; item: BigNumber }
     >;
 
-    'LogERC721WithDraw(address,uint256)'(
+    "LogERC721WithDraw(address,uint256)"(
       to?: string | null,
       item?: null
     ): TypedEventFilter<[string, BigNumber], { to: string; item: BigNumber }>;
