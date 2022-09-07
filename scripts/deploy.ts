@@ -11,10 +11,6 @@ async function main() {
     .createContractDeployer('ExchangeFactory', [])
     .deploy();
   if (ExchangeFactory == null) throw new Error('ExchangeFactory not deployed');
-  const GLDToken = await factory
-    .createContractDeployer('GLDToken', [10000])
-    .deploy();
-  if (GLDToken == null) throw new Error('GLDToken not deployed');
 }
 
 // We recommend this pattern to be able to use async/await everywhere
