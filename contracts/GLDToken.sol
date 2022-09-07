@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 pragma solidity ^0.8.4;
 
-import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
+import './ERC20Token.sol';
 
-contract GLDToken is ERC20 {
-  constructor(uint256 initialSupply) ERC20('Gold', 'GLD') {
-    _mint(msg.sender, initialSupply);
-  }
+contract GLDToken is ERC20Token {
+  constructor(uint256 _initialSupply)
+    ERC20Token('Gold', 'GLD', _initialSupply)
+  {}
 }
