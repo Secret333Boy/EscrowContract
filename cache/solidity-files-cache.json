@@ -663,8 +663,8 @@
       ]
     },
     "D:\\Projects\\Escrow\\contracts\\GLDToken.sol": {
-      "lastModificationDate": 1662475233654,
-      "contentHash": "d5c99b6c5e1c0c75d8be2d283d58d3b6",
+      "lastModificationDate": 1662548247928,
+      "contentHash": "b99b4f82c576749435c6d9c2a2ac9bac",
       "sourceName": "contracts/GLDToken.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -690,7 +690,7 @@
         }
       },
       "imports": [
-        "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+        "./ERC20Token.sol"
       ],
       "versionPragmas": [
         "^0.8.4"
@@ -957,6 +957,154 @@
       ],
       "artifacts": [
         "EnglishAuction"
+      ]
+    },
+    "D:\\Projects\\Escrow\\contracts\\Exchange.sol": {
+      "lastModificationDate": 1662548492664,
+      "contentHash": "07dad5f01947175a70b599b38bf1ee64",
+      "sourceName": "contracts/Exchange.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+        "./IFactory.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "Exchange"
+      ]
+    },
+    "D:\\Projects\\Escrow\\contracts\\IFactory.sol": {
+      "lastModificationDate": 1662550273672,
+      "contentHash": "e6ccdab6247a799d0310767e651f2522",
+      "sourceName": "contracts/IFactory.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "IFactory"
+      ]
+    },
+    "D:\\Projects\\Escrow\\contracts\\ExchangeFactory.sol": {
+      "lastModificationDate": 1662550273579,
+      "contentHash": "ea4468962b6c4e17769eb699d239b400",
+      "sourceName": "contracts/ExchangeFactory.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/access/Ownable.sol",
+        "./Exchange.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "ExchangeFactory"
+      ]
+    },
+    "D:\\Projects\\Escrow\\contracts\\ERC20Token.sol": {
+      "lastModificationDate": 1662548053037,
+      "contentHash": "729c4c1344ee4d885e19aeaf667c29ef",
+      "sourceName": "contracts/ERC20Token.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "ERC20Token"
       ]
     }
   }
