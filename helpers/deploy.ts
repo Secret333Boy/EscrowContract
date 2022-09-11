@@ -34,7 +34,7 @@ export class ContractDeployer<C extends string> {
     private contactName: C,
     private readonly args: unknown[] = [],
     private readonly logger: ILogger,
-    private readonly copyService: CopyService
+    public readonly copyService: CopyService
   ) {
     this.currentNetwork = process.env.HARDHAT_NETWORK;
   }
