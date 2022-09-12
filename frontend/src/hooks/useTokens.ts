@@ -57,16 +57,17 @@ export default (signer: ethers.Signer) => {
               signer
             ) as Contract & Exchange;
 
-            let pricePer1Ether = 'Unknown';
-            let pricePer1Token = 'Unknown';
+            let pricePer1Ether = ethers.BigNumber.from(0);
+            let pricePer1Token = ethers.BigNumber.from(0);
 
             try {
-              pricePer1Ether = (
-                await exchangeContract.getTokenAmount((1 * 10) ^ 18)
-              ).toString();
-              pricePer1Token = (
-                await exchangeContract.getEthAmount((1 * 10) ^ 18)
-              ).toString();
+              pricePer1Ether = await exchangeContract.getTokenAmount(
+                '1000000000000000000'
+              );
+
+              pricePer1Token = await exchangeContract.getEthAmount(
+                '1000000000000000000'
+              );
             } catch (e) {
               console.error('There is not enough liquidity');
             }

@@ -7,7 +7,7 @@ export interface Token {
   address: string;
   contract: ethers.Contract & ERC20;
   signerBalance: string;
-  pricePer1Ether: string;
-  pricePer1Token: string;
+  pricePer1Ether: ethers.BigNumber;
+  pricePer1Token: ethers.BigNumber;
   exchangeContract: ethers.Contract & Exchange;
 }
